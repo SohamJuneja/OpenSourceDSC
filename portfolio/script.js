@@ -54,4 +54,21 @@ function initPage() {
     setupContactForm();
 }
 
+// Hamburger Menu Functionality
+const hamburger = document.querySelector('.hamburger-menu');
+const navLinks = document.querySelector('.nav-links');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navLinks.classList.toggle('active');
+});
+
+// Close menu when clicking a link
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+    });
+});
+
 document.addEventListener('DOMContentLoaded', initPage);

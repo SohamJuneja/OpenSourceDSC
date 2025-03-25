@@ -4,14 +4,77 @@
     <title>Tech Club - Home</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/layout.css">
+    <style>
+        /* Hamburger Menu Styles */
+        .hamburger-menu {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 100;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: #333;
+            transition: all 0.3s ease-in-out;
+        }
+
+        @media screen and (max-width: 768px) {
+            .hamburger-menu {
+                display: block;
+            }
+
+            .hamburger-menu.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger-menu.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger-menu.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            #nav ul {
+                position: fixed;
+                left: -100%;
+                top: 0;
+                flex-direction: column;
+                background-color: white;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+                padding: 60px 0;
+            }
+
+            #nav ul.active {
+                left: 0;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="logo">
-            <img src="images/logo.png">
+            <img src="images/logo.png" alt="logo">
         </div>
         
         <nav id="nav">
+            <button class="hamburger-menu" aria-label="Toggle navigation menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="about">About</a></li>
@@ -137,5 +200,23 @@
     </footer>
     
     <script src="js/main.js"></script>
+    <script>
+        // Hamburger Menu Functionality
+        const hamburger = document.querySelector('.hamburger-menu');
+        const navLinks = document.querySelector('#nav ul');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('#nav ul a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
