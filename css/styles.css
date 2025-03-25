@@ -102,6 +102,23 @@ button:hover {
     font-weight: 500;
 }
 
+
+.register-btn {
+    background-color: var(--primary-color); /* Use primary color for consistency */
+    color: white;
+    padding: 12px 24px; /* Increase padding for better appearance */
+    border-radius: 4px;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 600; /* Increase font weight for better readability */
+    transition: background-color 0.3s, transform 0.3s; /* Add transition for hover effect */
+}
+
+.register-btn:hover {
+    background-color: var(--secondary-color); /* Change background color on hover */
+    transform: translateY(-3px); /* Add slight lift effect on hover */
+}
+
 /* Hero section styling - attractive but with layout issues */
 .hero-section {
     height: 500px; /* Fixed height instead of min-height */
