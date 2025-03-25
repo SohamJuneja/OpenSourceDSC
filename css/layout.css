@@ -1,19 +1,14 @@
-/* Layout system with improved design but intentional issues */
-
-/* Container with better defaults but still problematic */
 .container {
     width: 100%;
-    max-width: 1200px; /* Added max-width for proper responsiveness */
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 15px;
 }
 
-/* Section layouts - better spacing */
 section {
     margin-bottom: 4rem;
 }
 
-/* Grid system - better but with issues */
 .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -161,12 +156,76 @@ section {
 
 /* Problematic footer layout */
 footer {
-    display: flex;
-    flex-wrap: wrap;
-    /* No proper column structure */
-    /* No proper spacing */
+    background-color:#3498db;
+    color: #ffffff;
+    padding: 3rem 2rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    font-family: 'Arial', sans-serif;
+    position: relative;
 }
 
+footer div {
+    flex: 1 1 200px;
+    margin: 10px;
+}
+footer-col {
+    padding: 0 1rem;
+}
+
+.footer-col h3 {
+    border-bottom: 2px solid black;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    color: black;
+}
+
+.footer-col p {
+    color: white;
+    line-height: 1.6;
+}
+
+.footer-col ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-col ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+    color: #3498db;
+}
+
+.copyright {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid #2c3e50;
+    font-size: 0.9rem;
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    footer {
+        grid-template-columns: 1fr;
+    }
+
+    .copyright {
+        text-align: center;
+    }
+}
 /* Responsive issues - incomplete media queries */
 @media (max-width: 1200px) {
     .container {
@@ -176,6 +235,9 @@ footer {
 
 @media (max-width: 768px) {
     /* Nav is missing a mobile design */
+    .mobile-toggle {
+        display: block; /* Show mobile toggle on mobile */
+    }
     
     .grid,
     .grid-2,
@@ -194,4 +256,11 @@ footer {
 
 @media (max-width: 480px) {
     /* Missing additional mobile adjustments */
+    .hero-section {
+        padding: 1rem;
+    }
+
+    .mission {
+        padding: 2rem;
+    }
 }

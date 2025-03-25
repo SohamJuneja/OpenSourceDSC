@@ -1,69 +1,105 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Events - Tech Club</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcoming Events - Tech Club</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/layout.css">
 </head>
 <body>
     <header>
-        <div class="logo">Tech Club</div>
+        <div class="logo">
+            <img src="images/logo.png" alt="Tech Club Logo">
+        </div>
         <nav id="nav">
             <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="events.html">Events</a></li>
+                <li><a href="events.html" class="active">Events</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
                 <li><a href="team.html">Team</a></li>
                 <li><a href="contactus.html">Contact</a></li>
             </ul>
         </nav>
+        <button id="dark-mode-toggle" onclick="toggleDarkMode()">Dark Mode</button>
     </header>
 
-    <h1>Upcoming Events</h1>
-    
-    <div class="events-container">
-        <div class="event-card">
-            <img src="images/event1.jpg">
-            <h3>Open Source Workshop</h3>
-            <p class="date">April 5, 2025</p>
-            <p class="location">Room 101, Tech Building</p>
-            <p>Learn how to contribute to open source projects</p>
-            <div class="register" onclick="register(1)">Register</div>
-        </div>
-        
-        <div class="event-card">
-            <img src="images/event2.png">
-            <h3>Web Development Bootcamp</h3>
-            <p class="date">April 12, 2025</p>
-            <p class="location">Online</p>
-            <p>A beginner-friendly introduction to HTML, CSS and JavaScript</p>
-            <div class="register" onclick="register(2)">Register</div>
-        </div>
-        
-        <div class="event-card">
-            <img src="images/event2.png">
-            <h3>AI Ethics Panel</h3>
-            <p class="date">April 20, 2025</p>
-            <p class="location">Auditorium</p>
-            <p>Join our discussion on the ethical implications of AI</p>
-            <div class="register" onclick="register(3)">Register</div>
-        </div>
-    </div>
-    
-    <div class="propose-event">
-        <h2>Propose an Event</h2>
-        <form>
-            <input type="text" placeholder="Event Title">
-            <input type="text" placeholder="Date">
-            <input type="text" placeholder="Location">
-            <textarea placeholder="Description"></textarea>
-            <button type="submit">Submit</button>
-        </form>
-    </div>
+    <main>
+        <section class="featured-events">
+            <div class="container">
+                <h1>Upcoming Events</h1>
+                <p class="section-description">Join us for exciting tech workshops, panels, and learning opportunities!</p>
+                
+                <div class="event-cards">
+                    <div class="card">
+                        <div class="event-image">
+                            <img src="images/event1.jpg" alt="Open Source Workshop">
+                        </div>
+                        <div class="event-info">
+                            <h3>Open Source Workshop</h3>
+                            <p class="date">April 5, 2025</p>
+                            <p class="location">Room 101, Tech Building</p>
+                            <p>Learn how to contribute to open source projects and collaborate with developers worldwide.</p>
+                            <button onclick="register(1)" class="btn">Register</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="event-image">
+                            <img src="images/event2.png" alt="Web Development Bootcamp">
+                        </div>
+                        <div class="event-info">
+                            <h3>Web Development Bootcamp</h3>
+                            <p class="date">April 12, 2025</p>
+                            <p class="location">Online</p>
+                            <p>A beginner-friendly introduction to HTML, CSS, and JavaScript. No prior experience required!</p>
+                            <button onclick="register(2)" class="btn">Register</button>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="event-image">
+                            <img src="images/event2.png" alt="AI Ethics Panel">
+                        </div>
+                        <div class="event-info">
+                            <h3>AI Ethics Panel</h3>
+                            <p class="date">April 20, 2025</p>
+                            <p class="location">Auditorium</p>
+                            <p>Join our expert panel discussing the complex ethical implications of artificial intelligence.</p>
+                            <button onclick="register(3)" class="btn">Register</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="propose-event container">
+            <h2>Propose Your Own Event</h2>
+            <form id="event-proposal-form">
+                <div class="form-group">
+                    <label for="event-title">Event Title</label>
+                    <input type="text" id="event-title" name="event-title" required placeholder="Enter event title">
+                </div>
+                <div class="form-group">
+                    <label for="event-date">Date</label>
+                    <input type="date" id="event-date" name="event-date" required>
+                </div>
+                <div class="form-group">
+                    <label for="event-location">Location</label>
+                    <input type="text" id="event-location" name="event-location" required placeholder="Enter event location">
+                </div>
+                <div class="form-group">
+                    <label for="event-description">Description</label>
+                    <textarea id="event-description" name="event-description" rows="4" required placeholder="Describe your proposed event"></textarea>
+                </div>
+                <button type="submit" class="btn">Submit Event Proposal</button>
+            </form>
+        </section>
+    </main>
 
     <footer>
-        <p>© Tech Club 2025</p>
+        <p>© 2025 Tech Club. All Rights Reserved.</p>
     </footer>
     
     <script src="js/main.js"></script>
