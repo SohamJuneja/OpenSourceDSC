@@ -300,3 +300,60 @@ form button {
 .social-links a:hover {
     color: #007bff; /* Change color on hover */
 }
+
+/* Focus states for interactive elements */
+a:focus,
+button:focus,
+input:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.2);
+}
+
+/* Specific focus states for navigation */
+nav a:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 4px;
+    text-decoration: underline;
+}
+
+/* Focus state for social media links */
+.social-links a:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 4px;
+    transform: translateY(-2px);
+}
+
+/* Focus state for register buttons */
+.register-btn:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.2);
+    text-decoration: underline;
+}
+
+/* Focus state for form elements */
+.newsletter input:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 0;
+    border-color: var(--primary-color);
+}
+
+/* Focus state for hamburger menu */
+.hamburger:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Focus state for dark mode toggle */
+#dark-mode-toggle:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.2);
+}
+
+/* Remove focus outline for mouse users, but keep it for keyboard navigation */
+:focus:not(:focus-visible) {
+    outline: none;
+    box-shadow: none;
+}
