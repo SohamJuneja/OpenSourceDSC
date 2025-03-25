@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Tests</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1 {
+      color: #2c3e50;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+    }
+    .instructions {
+      background-color: #f8f9fa;
+      border-left: 4px solid #4CAF50;
+      padding: 15px;
+      margin: 20px 0;
+    }
+    .test-summary {
+      background-color: #e9ecef;
+      padding: 15px;
+      border-radius: 4px;
+      margin-top: 30px;
+    }
+    code {
+      background-color: #f1f1f1;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-family: Monaco, monospace;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    #test-output {
+      margin-top: 20px;
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 4px;
+      max-height: 400px;
+      overflow-y: auto;
+      background-color: #f8f8f8;
+      font-family: monospace;
+    }
+    .pass {
+      color: green;
+    }
+    .fail {
+      color: red;
+    }
+    .suite-header {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>JavaScript Unit Tests</h1>
+  
+  <div class="instructions">
+    <p>This page runs unit tests for JavaScript functions in the project. Click the "Run Tests" button to execute all tests.</p>
+    <p>Tests are organized in test suites for different components:</p>
+    <ul>
+      <li>Gallery - Tests for gallery image display and filtering</li>
+      <li>Portfolio - Tests for project rendering and contact form</li>
+      <li>Testimonials - Tests for testimonial display and carousel functionality</li>
+      <li>Theme - Tests for theme toggling and persistence</li>
+    </ul>
+  </div>
+  
+  <button id="manual-run-tests">Run All Tests</button>
+  
+  <div id="test-output"></div>
+  
+  <div class="test-summary">
+    <p>These tests utilize a simple custom testing framework without third-party dependencies.</p>
+    <p>The framework provides these assertion methods:</p>
+    <ul>
+      <li><code>assert.equal(actual, expected, message)</code> - Tests that two values are strictly equal</li>
+      <li><code>assert.true(value, message)</code> - Tests that a value is true</li>
+      <li><code>assert.false(value, message)</code> - Tests that a value is false</li>
+    </ul>
+  </div>
+  
+  <!-- Mock files with empty functions to prevent errors -->
+  <script>
+    // Mock window and document if needed
+    if (typeof window === 'undefined') {
+      global.window = {};
+    }
+    
+    // Define empty mock functions that will be tested
+    window.loadGallery = function() {};
+    window.filterGallery = function() {};
+    window.setupLightbox = function() {};
+    window.openLightbox = function() {};
+    window.renderProjects = function() {};
+    window.setupContactForm = function() {};
+    window.initPage = function() {};
+    window.loadTestimonials = function() {};
+    window.setupTestimonialCarousel = function() {};
+    window.nextTestimonial = function() {};
+    window.prevTestimonial = function() {};
+    window.toggleTheme = function() {};
+    window.loadTheme = function() {};
+    window.setupThemeToggle = function() {};
+  </script>
+  
+  <!-- Include test framework and test modules -->
+  <script src="run-tests.js"></script>
+  <script src="gallery.test.js"></script>
+  <script src="portfolio.test.js"></script>
+  <script src="testimonials.test.js"></script>
+  <script src="theme.test.js"></script>
+  
+  <script>
+    // Manual run button
+    document.getElementById('manual-run-tests').addEventListener('click', function() {
+      const testOutput = document.getElementById('test-output');
+      testOutput.innerHTML = ''; // Clear previous results
+      
+      // Redirect console.log to the test output div
+      const originalConsoleLog = console.log;
+      console.log = function(message) {
+        originalConsoleLog.apply(console, arguments);
+        const logLine = document.createElement('div');
+        logLine.textContent = message;
+        
+        if (message.includes('❌')) {
+          logLine.className = 'fail';
+        } else if (message.includes('✓')) {
+          logLine.className = 'pass';
+        } else if (message.includes('===')) {
+          logLine.className = 'suite-header';
+        }
+        
+        testOutput.appendChild(logLine);
+      };
+      
+      // Run the tests
+      runAllTests();
+      
+      // Restore console.log
+      console.log = originalConsoleLog;
+    });
+  </script>
+</body>
+</html> 

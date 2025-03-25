@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Tests</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.5;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .test-selector {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .test-selector button {
+            padding: 8px 16px;
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .test-selector button:hover {
+            background-color: #e0e0e0;
+        }
+        .test-selector button.active {
+            background-color: #4CAF50;
+            color: white;
+        }
+        #test-output {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 15px;
+            white-space: pre-wrap;
+            font-family: monospace;
+            min-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+        .console-log {
+            color: #333;
+        }
+        .console-error {
+            color: #e74c3c;
+        }
+        .console-warn {
+            color: #f39c12;
+        }
+        .console-info {
+            color: #3498db;
+        }
+        .summary {
+            display: flex;
+            gap: 10px;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .summary div {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 4px;
+            flex: 1;
+            text-align: center;
+        }
+        .passed { background-color: #dff0d8; color: #3c763d; }
+        .failed { background-color: #f2dede; color: #a94442; }
+        .skipped { background-color: #fcf8e3; color: #8a6d3b; }
+        .duration { background-color: #d9edf7; color: #31708f; }
+    </style>
+</head>
+<body>
+    <h1>OpenSourceDSC JavaScript Tests</h1>
+    
+    <div class="test-selector">
+        <button id="run-all" class="active">Run All Tests</button>
+        <button id="run-main">Test main.js</button>
+        <button id="run-gallery">Test gallery.js</button>
+        <button id="run-portfolio">Test portfolio script.js</button>
+    </div>
+    
+    <div id="test-output">Select tests to run...</div>
+    
+    <div class="summary">
+        <div class="passed">Passed: <span id="passed-count">0</span></div>
+        <div class="failed">Failed: <span id="failed-count">0</span></div>
+        <div class="skipped">Skipped: <span id="skipped-count">0</span></div>
+        <div class="duration">Duration: <span id="duration">0s</span></div>
+    </div>
+    
+    <!-- Include test framework -->
+    <script src="test-framework.js"></script>
+    
+    <!-- Include the source files to test -->
+    <script src="../js/main.js"></script>
+    <script src="../js/gallery.js"></script>
+    <script src="../portfolio/script.js"></script>
+    
+    <!-- Include test files -->
+    <script src="main.test.js"></script>
+    <script src="gallery.test.js"></script>
+    <script src="portfolio.test.js"></script>
+    
+    <script>
+        // Override console methods to capture output
+        const originalConsole = {
+            log: console.log,
+            error: console.error,
+            warn: console.warn,
+            info: console.info
+        };
+        
+        const output = document.getElementById('test-output');
+        
+        // Redirect console output to the test-output div
+        console.log = function(...args) {
+            originalConsole.log(...args);
+            output.innerHTML += `<div class="console-log">${args.join(' ')}</div>`;
+        };
+        
+        console.error = function(...args) {
+            originalConsole.error(...args);
+            output.innerHTML += `<div class="console-error">${args.join(' ')}</div>`;
+        };
+        
+        console.warn = function(...args) {
+            originalConsole.warn(...args);
+            output.innerHTML += `<div class="console-warn">${args.join(' ')}</div>`;
+        };
+        
+        console.info = function(...args) {
+            originalConsole.info(...args);
+            output.innerHTML += `<div class="console-info">${args.join(' ')}</div>`;
+        };
+        
+        // Setup button event listeners
+        document.getElementById('run-all').addEventListener('click', function() {
+            activateButton(this);
+            runTests('all');
+        });
+        
+        document.getElementById('run-main').addEventListener('click', function() {
+            activateButton(this);
+            runTests('main');
+        });
+        
+        document.getElementById('run-gallery').addEventListener('click', function() {
+            activateButton(this);
+            runTests('gallery');
+        });
+        
+        document.getElementById('run-portfolio').addEventListener('click', function() {
+            activateButton(this);
+            runTests('portfolio');
+        });
+        
+        function activateButton(buttonElement) {
+            document.querySelectorAll('.test-selector button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            buttonElement.classList.add('active');
+        }
+        
+        function runTests(type) {
+            output.innerHTML = '';
+            
+            // Reset the test framework
+            TestFramework.reset();
+            
+            // Run the selected tests
+            let result;
+            switch (type) {
+                case 'main':
+                    result = runMainTests();
+                    break;
+                case 'gallery':
+                    result = runGalleryTests();
+                    break;
+                case 'portfolio':
+                    result = runPortfolioTests();
+                    break;
+                case 'all':
+                default:
+                    result = runAllTests();
+                    break;
+            }
+            
+            // Update the summary
+            document.getElementById('passed-count').textContent = result.passed;
+            document.getElementById('failed-count').textContent = result.failed;
+            document.getElementById('skipped-count').textContent = result.skipped;
+            document.getElementById('duration').textContent = result.duration + 's';
+        }
+    </script>
+</body>
+</html> 
