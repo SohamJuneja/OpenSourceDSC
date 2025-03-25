@@ -3,6 +3,7 @@
 <head>
     <title>Gallery - Tech Club</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/gallery.css">
     <link rel="stylesheet" href="css/layout.css">
 </head>
 <body>
@@ -22,7 +23,7 @@
             </ul>
         </nav>
         
-        <button id="dark-mode-toggle">Dark Mode</button>
+        <button id="dark-mode-toggle" onclick="toggleDarkMode()">Dark Mode</button>
     </header>
 
     <div class="gallery-header">
@@ -30,10 +31,10 @@
         <p>Memories from our past events and activities</p>
         
         <div class="gallery-filters">
-            <span class="active" onclick="filterGallery('all')">All</span>
-            <span onclick="filterGallery('hackathon')">Hackathons</span>
-            <span onclick="filterGallery('workshop')">Workshops</span>
-            <span onclick="filterGallery('social')">Social Events</span>
+            <span class="active" onclick="fetchGalleryData('all')">All</span>
+            <span onclick="fetchGalleryData('hackathon')">Hackathons</span>
+            <span onclick="fetchGalleryData('workshop')">Workshops</span>
+            <span onclick="fetchGalleryData('social')">Social Events</span>
         </div>
     </div>
     
@@ -41,11 +42,7 @@
         <p class="empty-gallery">Loading gallery images...</p>
     </div>
     
-    <div id="lightbox" class="lightbox">
-        <span class="close-lightbox">&times;</span>
-        <img class="lightbox-content" id="lightbox-img">
-        <div id="lightbox-caption"></div>
-    </div>
+    
     
     <div class="upload-section">
         <h2>Share Your Photos</h2>

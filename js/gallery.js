@@ -1,32 +1,29 @@
-// Gallery specific JavaScript with intentional issues
+'use strict';
 
-// Missing 'use strict'
+// Properly declared variables
+let galleryImages = [];
+let currentCategory = 'all';
+let currentPage = 1;
+const itemsPerPage = 6;
 
-// Poorly declared variables
-var galleryImages = [];
-var currentCategory = 'all';
-
-// Data hardcoded instead of fetched from an API
-var galleryData = [
-    { id: 1, src: "images/gallery/hackathon1.jpg", category: "hackathon", caption: "Annual Hackathon 2024" },
-    { id: 2, src: "images/gallery/workshop1.jpg", category: "workshop", caption: "Python for Beginners" },
-    { id: 3, src: "images/gallery/social1.jpg", category: "social", caption: "End of Year Party" },
-    { id: 4, src: "images/gallery/hackathon2.jpg", category: "hackathon", caption: "Team Coding Session" },
-    { id: 5, src: "images/gallery/workshop2.jpg", category: "workshop", caption: "Web Development Workshop" },
-    { id: 6, src: "images/gallery/social2.jpg", category: "social", caption: "Tech Meetup" },
-    { id: 7, src: "images/gallery/hackathon3.jpg", category: "hackathon", caption: "Hackathon Winners" },
-    { id: 8, src: "images/gallery/workshop3.jpg", category: "workshop", caption: "Mobile App Development" },
-    { id: 9, src: "images/gallery/social3.jpg", category: "social", caption: "Networking Event" },
-    // Should have at least 12 images for a proper grid
-];
+// Fetch data from an API
+async function fetchGalleryData() {
+    try {
+        const response = await fetch('path/to/api/gallery');
+        galleryData = await response.json();
+        loadGallery();
+    } catch (error) {
+        console.error('Error fetching gallery data:', error);
+    }
+}
 
 // Initialize gallery on page load
 window.onload = function() {
-    loadGallery();
+    fetchGalleryData();
     setupLightbox();
     
     // Event listener for filter clicks
-    var filters = document.querySelectorAll('.gallery-filters span');
+    const filters = document.querySelectorAll('.gallery-filters button');
     filters.forEach(function(filter) {
         filter.addEventListener('click', function() {
             // Remove active class from all filters
@@ -35,70 +32,95 @@ window.onload = function() {
             this.classList.add('active');
             
             // Update current category and reload gallery
-            currentCategory = this.getAttribute('onclick').match(/'(.*?)'/)[1];
+            currentCategory = this.getAttribute('data-category');
+            currentPage = 1;
             loadGallery();
         });
     });
     
-    // Form submission handling - with issues
-    var form = document.querySelector('.upload-section form');
+    // Form submission handling
+    const form = document.querySelector('.upload-section form');
     if (form) {
         form.addEventListener('submit', function(e) {
             e.preventDefault();
-            // Just shows alert instead of actual upload logic
             alert('Photo upload functionality is not implemented yet.');
-            // Doesn't validate form
             this.reset();
         });
     }
 };
 
-// Load gallery images based on current category
+// Load gallery images based on current category and page
 function loadGallery() {
-    var container = document.querySelector('.gallery-container');
-    // Doesn't check if container exists
+    const container = document.querySelector('.gallery-container');
+    if (!container) return;
     
-    // Clear container
     container.innerHTML = '';
     
-    // Filter images based on category
-    var filteredImages = currentCategory === 'all' 
+    const filteredImages = currentCategory === 'all' 
         ? galleryData 
         : galleryData.filter(img => img.category === currentCategory);
     
-    // Check if there are images
     if (filteredImages.length === 0) {
         container.innerHTML = '<p class="empty-gallery">No images found in this category.</p>';
         return;
     }
     
-    // Create image elements
-    filteredImages.forEach(function(image) {
-        var item = document.createElement('div');
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const paginatedImages = filteredImages.slice(startIndex, endIndex);
+    
+    paginatedImages.forEach(function(image) {
+        const item = document.createElement('div');
         item.className = 'gallery-item';
         item.dataset.id = image.id;
         
-        var img = document.createElement('img');
+        const img = document.createElement('img');
         img.src = image.src;
-        // Missing alt text
+        img.alt = image.caption;
+        img.loading = 'lazy';
         
-        // Missing error handling for image load failures
+        img.onerror = function() {
+            img.src = 'path/to/placeholder.jpg';
+        };
         
         item.appendChild(img);
         
-        // Add click event for lightbox
         item.addEventListener('click', function() {
             openLightbox(image);
         });
         
         container.appendChild(item);
     });
+    
+    setupPagination(filteredImages.length);
 }
 
-// Lightbox functionality - incomplete
+// Setup pagination controls
+function setupPagination(totalItems) {
+    const pagination = document.querySelector('.pagination');
+    if (!pagination) return;
+    
+    pagination.innerHTML = '';
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+    
+    for (let i = 1; i <= totalPages; i++) {
+        const pageButton = document.createElement('button');
+        pageButton.textContent = i;
+        pageButton.className = i === currentPage ? 'active' : '';
+        
+        pageButton.addEventListener('click', function() {
+            currentPage = i;
+            loadGallery();
+        });
+        
+        pagination.appendChild(pageButton);
+    }
+}
+
+// Lightbox functionality
 function setupLightbox() {
-    var lightbox = document.getElementById('lightbox');
-    var closeLightbox = document.querySelector('.close-lightbox');
+    const lightbox = document.getElementById('lightbox');
+    const closeLightbox = document.querySelector('.close-lightbox');
     
     if (closeLightbox) {
         closeLightbox.addEventListener('click', function() {
@@ -106,62 +128,32 @@ function setupLightbox() {
         });
     }
     
-    // Missing keyboard accessibility
-    // Missing click outside to close
+    window.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            lightbox.style.display = 'none';
+        }
+    });
+    
+    lightbox.addEventListener('click', function(event) {
+        if (event.target === lightbox) {
+            lightbox.style.display = 'none';
+        }
+    });
 }
 
 function openLightbox(image) {
-    var lightbox = document.getElementById('lightbox');
-    var lightboxImg = document.getElementById('lightbox-img');
-    var caption = document.getElementById('lightbox-caption');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const caption = document.getElementById('lightbox-caption');
     
     if (lightbox && lightboxImg && caption) {
         lightboxImg.src = image.src;
         caption.textContent = image.caption;
         lightbox.style.display = 'block';
     }
-    
-    // Missing error handling
-    // Missing loading indicators
-    // Missing navigation between images
 }
 
-// Filter gallery function - called by onclick
-function filterGallery(category) {
-    currentCategory = category;
-    loadGallery();
-    
-    // Should update active class on filter buttons
-    // But this is handled by the event listener instead
-    // Creating inconsistent behavior
-}
-
-// Missing lazy loading implementation
-// Missing proper pagination
-// Missing proper error handling
-
-// Assuming this file handles image gallery functionality
-
+// Fetch gallery data on page load
 document.addEventListener('DOMContentLoaded', function() {
-    const galleryItems = document.querySelectorAll('.gallery-item');
-    const modal = document.querySelector('.modal');
-    const modalImg = document.querySelector('.modal-img');
-    const closeModal = document.querySelector('.close-modal');
-
-    galleryItems.forEach(item => {
-        item.addEventListener('click', function() {
-            modal.style.display = 'block';
-            modalImg.src = this.querySelector('img').src;
-        });
-    });
-
-    closeModal.addEventListener('click', function() {
-        modal.style.display = 'none';
-    });
-
-    window.addEventListener('click', function(event) {
-        if (event.target === modal) {
-            modal.style.display = 'none';
-        }
-    });
+    fetchGalleryData();
 });

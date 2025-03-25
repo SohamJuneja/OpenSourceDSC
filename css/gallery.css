@@ -22,7 +22,34 @@
     display: flex;
     justify-content: center;
     margin-bottom: 2rem;
-    /* No proper focus states */
+}
+
+.gallery-filters button {
+    padding: 0.5rem 1.5rem;
+    margin: 0 0.5rem;
+    border-radius: 30px;
+    background-color: #eee;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: none;
+    outline: none;
+}
+
+.gallery-filters button:focus {
+    outline: 2px solid #3498db;
+}
+
+.gallery-filters button.active {
+    background-color: #3498db;
+    color: white;
+}
+
+.gallery-filters button:hover {
+    background-color: #ddd;
+}
+
+.gallery-filters button.active:hover {
+    background-color: #2980b9;
 }
 
 .gallery-filters span {
@@ -32,8 +59,6 @@
     background-color: #eee;
     cursor: pointer;
     transition: all 0.3s;
-    /* Not keyboard accessible */
-    /* Should be buttons */
 }
 
 .gallery-filters span.active {
@@ -55,7 +80,12 @@
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
     padding: 2rem;
-    /* No responsive adjustments */
+}
+
+@media (max-width: 768px) {
+    .gallery-container {
+        grid-template-columns: 1fr;
+    }
 }
 
 .gallery-item {
@@ -66,7 +96,10 @@
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     transition: transform 0.3s;
-    /* No keyboard interaction */
+}
+
+.gallery-item:focus {
+    outline: 2px solid #3498db;
 }
 
 .gallery-item:hover {
@@ -101,8 +134,9 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,0.9);
-    /* Missing animation */
-    /* Missing proper centering */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .lightbox-content {
@@ -120,15 +154,16 @@
     color: white;
     font-size: 35px;
     cursor: pointer;
-    /* Not accessible - needs more contrast */
-    /* No focus state */
+}
+
+.close-lightbox:focus {
+    outline: 2px solid #fff;
 }
 
 #lightbox-caption {
     color: white;
     text-align: center;
     padding: 1rem;
-    /* Poor contrast with background */
 }
 
 /* Upload section - styling issues */
@@ -162,12 +197,16 @@
     padding: 0.8rem 1rem;
     border: 1px solid #ddd;
     border-radius: 4px;
-    /* No focus states */
+}
+
+
+.upload-section input:focus,
+.upload-section select:focus {
+    outline: 2px solid #3498db;
 }
 
 .upload-section input[type="file"] {
     padding: 0.5rem 0;
-    /* No proper styling */
 }
 
 .upload-section button {
@@ -178,9 +217,11 @@
     font-size: 1rem;
     border-radius: 4px;
     cursor: pointer;
-    /* No hover states */
 }
 
+.upload-section button:hover {
+    background-color: #2980b9;
+}
 /* Missing pagination controls styling */
 
 /* Missing category indicators on images */
@@ -189,8 +230,9 @@
 
 /* Missing mobile optimizations */
 @media (max-width: 768px) {
-    /* Empty media query */
-}
+    .gallery-container {
+        grid-template-columns: 1fr;
+    }
 
 /* Dark mode adjustments - incomplete */
 .dark-mode .gallery-header {
@@ -199,5 +241,6 @@
 }
 
 .dark-mode .upload-section {
-    /* Missing dark mode styling */
+    background-color: #333;
+    color: #fff;
 }
