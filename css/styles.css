@@ -1,4 +1,4 @@
-/* Color variables - inconsistently used throughout */
+/* Color variables */
 :root {
     --primary-color: #3498db;
     --secondary-color: #2ecc71;
@@ -6,22 +6,30 @@
     --text-color: #333333;
     --light-gray: #f5f5f5;
     --dark-gray: #444444;
+    --footer-bg: #2c3e50;
+    --heading-color: #2c3e50;
+    --border-color: #e2e8f0;
+    --text-muted: #718096;
+    --footer-text-color: #ffffff; /* Added variable for footer text color */
 }
 
-/* Base styles with improved typography but still with issues */
+/* Base styles */
 body {
-    font-family: 'Poppins', Arial;
-    /* Missing fallback sans-serif */
+    font-family: 'Poppins', Arial, sans-serif;
     color: var(--text-color);
     margin: 0;
     line-height: 1.6;
-    /* No box-sizing reset */
+    box-sizing: border-box;
     background-color: #fff;
 }
 
-/* Header styling - more attractive but with inconsistent selectors */
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+/* Header styling */
 header {
-    background-color: #2a75bb; /* Not using variable */
+    background-color: var(--primary-color);
     padding: 1rem 2rem;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     position: sticky;
@@ -39,13 +47,11 @@ header {
 
 .logo img {
     height: 50px;
-    /* Missing width attribute */
-    /* Missing proper sizing for mobile */
+    width: auto;
 }
 
-/* Navigation styling - better looking but with issues */
+/* Navigation styling */
 nav {
-    /* Inconsistent ID vs class usage */
     margin-left: auto;
 }
 
@@ -66,18 +72,16 @@ nav a {
     font-weight: 500;
     letter-spacing: 0.5px;
     position: relative;
-    /* Missing transition for hover effect */
+    transition: color 0.3s ease;
 }
 
-/* Incomplete hover effect */
 nav a:hover {
     color: rgba(255, 255, 255, 0.9);
-    /* Missing underline or other indicator */
 }
 
-/* Prettier buttons but inconsistent styling */
+/* Button styling */
 button {
-    background-color: #3498db; /* Not using CSS variable */
+    background-color: var(--primary-color);
     color: white;
     padding: 12px 24px;
     border: none;
@@ -88,11 +92,10 @@ button {
 }
 
 button:hover {
-    background-color: #2980b9;
+    background-color: var(--secondary-color);
 }
 
 .btn {
-    /* Inconsistent with button styling */
     background-color: var(--secondary-color);
     color: white;
     padding: 10px 20px;
@@ -102,26 +105,26 @@ button:hover {
     font-weight: 500;
 }
 
-
+/* Register button styling */
 .register-btn {
-    background-color: var(--primary-color); /* Use primary color for consistency */
+    background-color: var(--primary-color);
     color: white;
-    padding: 12px 24px; /* Increase padding for better appearance */
+    padding: 12px 24px;
     border-radius: 4px;
     display: inline-block;
     text-decoration: none;
-    font-weight: 600; /* Increase font weight for better readability */
-    transition: background-color 0.3s, transform 0.3s; /* Add transition for hover effect */
+    font-weight: 600;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .register-btn:hover {
-    background-color: var(--secondary-color); /* Change background color on hover */
-    transform: translateY(-3px); /* Add slight lift effect on hover */
+    background-color: var(--secondary-color);
+    transform: translateY(-3px);
 }
 
-/* Hero section styling - attractive but with layout issues */
+/* Hero section styling */
 .hero-section {
-    height: 500px; /* Fixed height instead of min-height */
+    min-height: 500px;
     background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url("../images/hero.jpg");
     background-size: cover;
     background-position: center;
@@ -134,7 +137,7 @@ button:hover {
     padding: 2rem;
 }
 
-.hero-section h3 { /* Should be h1 */
+.hero-section h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
@@ -146,14 +149,13 @@ button:hover {
     margin-bottom: 2rem;
 }
 
-/* Sections styling - good spacing but missing some properties */
+/* Sections styling */
 section {
     padding: 4rem 2rem;
 }
 
 .featured-events {
     background-color: var(--light-gray);
-    padding: 4rem 2rem;
 }
 
 .featured-events h2 {
@@ -162,25 +164,25 @@ section {
     color: var(--dark-gray);
 }
 
-/* Card components with better styling but layout issues */
+/* Card components styling */
 .event-cards {
     display: flex;
     flex-wrap: wrap;
-    /* No proper gap */
-    /* No responsive adjustments */
+    gap: 15px;
+    justify-content: center;
 }
 
-.card {
+.event-card {
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     background-color: white;
     transition: transform 0.3s, box-shadow 0.3s;
-    width: 330px; /* Fixed width instead of responsive */
-    margin: 0 15px 30px; /* Inconsistent spacing units */
+    flex: 1 1 calc(33.333% - 30px);
+    margin: 15px;
 }
 
-.card:hover {
+.event-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 12px 16px rgba(0,0,0,0.1);
 }
@@ -194,7 +196,6 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    /* No transition effect */
 }
 
 .event-info {
@@ -231,8 +232,6 @@ section {
     width: 80%;
     margin: 0 auto;
     border-collapse: collapse;
-    /* Missing proper table styling */
-    /* No responsive behavior */
 }
 
 .team-preview td {
@@ -240,12 +239,124 @@ section {
     border-bottom: 1px solid #eee;
 }
 
-/* Footer styling - better looking but missing elements */
+/* Footer styling */
 footer {
-    background-color: #2c3e50;
-    color: white;
+    background-color: var(--footer-bg);
+    color: var(--footer-text-color); /* Use footer text color variable */
     padding: 3rem 2rem;
-    /* No proper layout for columns */
+}
+
+.site-footer {
+    background-color: var(--footer-bg);
+    padding: 4rem 2rem 2rem;
+    margin-top: 4rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-col {
+    padding: 0 1rem;
+}
+
+.footer-col h3 {
+    color: var(--footer-text-color); /* Use footer text color variable */
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.footer-col h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -0.5rem;
+    width: 50px;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+.footer-col.links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-col.links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-col.links a {
+    color: var(--footer-text-color); /* Use footer text color variable */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-col.links a:hover,
+.footer-col.links a:focus {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    padding: 0;
+    list-style: none;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: white;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.social-links a:hover,
+.social-links a:focus {
+    transform: translateY(-3px);
+    background-color: var(--secondary-color);
+}
+
+.footer-bottom {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.copyright {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+}
+.footer-col ul {
+    display: flex;
+    flex-direction: column;  /* Vertical stack */
+    align-items: flex-start;  /* Left align (optional) */
+    gap: 10px;  /* Elements ke beech gap */
+    list-style: none;  /* Bullet points hataane ke liye */
+    padding: 0;  
+    margin: 0;
+}
+
+.footer-col a {
+    text-decoration: none;  /* Underline hataane ke liye */
+    color: #ffffff;  /* Link color */
+    transition: color 0.3s;
+}
+
+.footer-col a:hover {
+    color: #007BFF;  /* Hover effect */
 }
 
 /* Timeline styling */
@@ -258,18 +369,13 @@ footer {
     content: '';
     position: absolute;
     top: 0;
-    left: 50%; /* This won't work well for mobile */
+    left: 50%;
     width: 2px;
     height: 100%;
     background-color: var(--primary-color);
 }
 
-/* Missing proper media queries */
-@media (max-width: 768px) {
-    /* Empty media query */
-}
-
-/* Form styling but with accessibility issues */
+/* Form styling */
 form input, 
 form textarea {
     width: 100%;
@@ -277,19 +383,19 @@ form textarea {
     margin-bottom: 1rem;
     border: 1px solid #ddd;
     border-radius: 4px;
-    /* No focus states */
 }
 
 form button {
     width: 100%;
 }
 
-/* Dark mode - incomplete */
+/* Dark mode */
 .dark-mode {
     background-color: #222;
     color: #eee;
-    /* Missing comprehensive styling for all components */
 }
+
+/* Social links */
 .social-links a {
     font-size: 24px; 
     color: #555; 
@@ -298,7 +404,7 @@ form button {
 }
 
 .social-links a:hover {
-    color: #007bff; /* Change color on hover */
+    color: #007bff;
 }
 
 /* Focus states for interactive elements */
@@ -357,6 +463,8 @@ nav a:focus {
     outline: none;
     box-shadow: none;
 }
+
+/* Screen reader only */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -369,6 +477,7 @@ nav a:focus {
     border: 0;
 }
 
+/* Skip link */
 .skip-link {
     position: absolute;
     top: -40px;
@@ -383,100 +492,7 @@ nav a:focus {
     top: 0;
 }
 
-.site-footer {
-    background-color: var(--footer-bg, #f8f9fa);
-    padding: 4rem 2rem 2rem;
-    margin-top: 4rem;
-}
-
-.footer-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.footer-col {
-    padding: 0 1rem;
-}
-
-.footer-col h3 {
-    color: var(--heading-color, #2c3e50);
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
-    position: relative;
-}
-
-.footer-col h3::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -0.5rem;
-    width: 50px;
-    height: 2px;
-    background-color: var(--primary-color);
-}
-
-.footer-col.links ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.footer-col.links li {
-    margin-bottom: 0.5rem;
-}
-
-.footer-col.links a {
-    color: var(--text-color, #4a5568);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.footer-col.links a:hover,
-.footer-col.links a:focus {
-    color: var(--primary-color);
-    text-decoration: underline;
-}
-
-.social-links {
-    display: flex;
-    gap: 1rem;
-    padding: 0;
-    list-style: none;
-}
-
-.social-links a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: var(--primary-color);
-    color: white;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.social-links a:hover,
-.social-links a:focus {
-    transform: translateY(-3px);
-    background-color: var(--secondary-color);
-}
-
-.footer-bottom {
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border-color, #e2e8f0);
-    text-align: center;
-}
-
-.copyright {
-    color: var(--text-muted, #718096);
-    font-size: 0.875rem;
-}
-
+/* Media queries */
 @media (max-width: 768px) {
     .site-footer {
         padding: 3rem 1rem 1.5rem;
@@ -500,4 +516,11 @@ nav a:focus {
     .social-links {
         justify-content: center;
     }
+}
+
+/* Add these styles to center the "Our Impact" and "Newsletter" sections */
+.achievements, .newsletter {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 800px;
 }

@@ -4,12 +4,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Tech Club - A community of tech enthusiasts organizing events, workshops and hackathons">
+    <meta name="keywords" content="Tech Club, technology, events, workshops, hackathons, community, innovation">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech Club - Home</title>
+    
+    <!-- Open Graph Metadata -->
+    <meta property="og:title" content="Tech Club - Home">
+    <meta property="og:description" content="Tech Club - A community of tech enthusiasts organizing events, workshops and hackathons">
+    <meta property="og:image" content="images/og-image.jpg">
+    <meta property="og:url" content="https://www.techclub.edu">
+    <meta property="og:type" content="website">
+    
+    <!-- Twitter Card Metadata -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tech Club - Home">
+    <meta name="twitter:description" content="Tech Club - A community of tech enthusiasts organizing events, workshops and hackathons">
+    <meta name="twitter:image" content="images/twitter-image.jpg">
+    <meta name="twitter:site" content="@TechClub">
+    
+    <!-- Structured Data Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Tech Club",
+      "url": "https://www.techclub.edu",
+      "logo": "https://www.techclub.edu/images/logo.png",
+      "sameAs": [
+        "https://www.facebook.com/techclub",
+        "https://www.twitter.com/techclub",
+        "https://www.instagram.com/techclub",
+        "https://www.linkedin.com/company/techclub"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "info@techclub.edu",
+        "contactType": "Customer Service"
+      }
+    }
+    </script>
+    
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         .hamburger {
             display: none;
@@ -127,9 +165,9 @@
             </div>
         </section>
 
-        <section class="achievements" aria-labelledby="achievements-title">
+        <section class="achievements" aria-labelledby="achievements-title" style="text-align: center;">
             <h2 id="achievements-title">Our Impact</h2>
-            <div class="grid-3" role="list"></div>
+            <div class="grid-3" role="list">
                 <div class="achievement-card" role="listitem">
                     <h3><span aria-label="More than 500">500+</span></h3>
                     <p>Active Members</p>
@@ -145,7 +183,7 @@
             </div>
         </section>
 
-        <section class="newsletter" aria-labelledby="newsletter-title">
+        <section class="newsletter" aria-labelledby="newsletter-title" style="text-align: center;">
             <h2 id="newsletter-title">Stay Updated</h2>
             <p>Subscribe to our newsletter for the latest events and tech news.</p>
 
