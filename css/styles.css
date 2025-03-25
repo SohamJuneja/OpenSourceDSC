@@ -7,7 +7,6 @@
     --light-gray: #f5f5f5;
     --dark-gray: #444444;
 }
-
 /* Base styles with improved typography but still with issues */
 body {
     font-family: 'Poppins', Arial, sans-serif; /* Added fallback sans-serif */
@@ -43,8 +42,9 @@ header {
 }
 
 /* Navigation styling - better looking but with issues */
-#nav {
-    margin-left: auto;
+nav {
+    display: flex;
+    align-items: center;
 }
 
 nav ul {
@@ -52,6 +52,13 @@ nav ul {
     list-style: none;
     margin: 0;
     padding: 0;
+}
+
+nav ul li {
+    margin-left: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 nav li {
@@ -215,6 +222,11 @@ section {
     border: 1px solid #ddd;
 }
 
+.achievements,.newsletter {    
+    padding: 0 2vw;
+    margin-bottom: 2vh;
+}
+
 .team-preview td {
     padding: 1rem;
     border-bottom: 1px solid #eee;
@@ -294,4 +306,66 @@ form button {
 
 .dark-mode .event-info p {
     color: #ccc;
+}
+.dark-mode {
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.dark-mode header {
+    background-color: #2c2c2c;
+    box-shadow: 0 2px 5px rgba(255,255,255,0.1);
+}
+
+.dark-mode nav a {
+    color: #e0e0e0;
+}
+
+.dark-mode .card {
+    background-color: #2c2c2c;
+    box-shadow: 0 4px 12px rgba(255,255,255,0.05);
+}
+
+.dark-mode .event-info h3 {
+    color: #f0f0f0;
+}
+
+.dark-mode .event-info p {
+    color: #a0a0a0;
+}
+
+.dark-mode .event-info .date {
+    color: #4db8ff;
+}
+
+.dark-mode footer {
+    background-color: #1f1f1f;
+}
+
+.dark-mode .hero-section {
+    background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url("../images/hero.jpg");
+}
+
+.dark-mode button {
+    background-color: #4db8ff;
+    color: white;
+}
+
+.dark-mode .btn {
+    background-color: #2ecc71;
+    color: white;
+}
+
+/* Smooth transition for dark mode changes */
+body, 
+header, 
+.card, 
+footer, 
+button {
+    transition: background-color 0.3s, color 0.3s;
+}
+#dark-mode-toggle{
+    background-color:#4db8ff;
+    color: white;
 }

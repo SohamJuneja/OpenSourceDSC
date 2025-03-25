@@ -1,10 +1,10 @@
-// Missing 'use strict' directive
+'use strict';
 
-// Poorly declared variables using var instead of let/const
-var menuButton;
-var navMenu;
-var darkModeToggle;
-var currentMode;
+// Declared variables using let/const
+let menuButton;
+let navMenu;
+let darkModeToggle;
+let currentMode;
 
 // Mobile menu toggle - functional but with issues
 function toggleMenu() {
@@ -35,23 +35,23 @@ window.onload = function() {
     }
     
     // Initialize form validation
-    var form = document.querySelector("form");
+    const form = document.querySelector("form");
     if (form) {
         form.addEventListener("submit", function(e) {
-            // Missing preventDefault
+            e.preventDefault();
             return validateForm();
         });
     }
     
     // Smooth scroll for navigation - but incomplete
-    var navLinks = document.querySelectorAll("nav a");
+    const navLinks = document.querySelectorAll("nav a");
     navLinks.forEach(function(link) {
         link.addEventListener("click", function(e) {
             // Only works for same-page links, not navigation between pages
             if (this.getAttribute("href").startsWith("#")) {
                 e.preventDefault();
-                var targetId = this.getAttribute("href");
-                var targetElement = document.querySelector(targetId);
+                const targetId = this.getAttribute("href");
+                const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     window.scrollTo({
                         top: targetElement.offsetTop - 100,
@@ -64,7 +64,7 @@ window.onload = function() {
     
     // Header scroll effect
     window.addEventListener("scroll", function() {
-        var header = document.querySelector("header");
+        const header = document.querySelector("header");
         if (window.scrollY > 50) {
             header.classList.add("scrolled");
         } else {
@@ -75,9 +75,9 @@ window.onload = function() {
 
 // Form validation with incomplete implementation
 function validateForm() {
-    var name = document.getElementById("name").value;
-    var email = document.getElementById("email").value;
-    var message = document.getElementById("message").value;
+    const name = document.getElementById("name").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
     
     // Incomplete validation logic
     if (name === "") {
@@ -114,14 +114,14 @@ function toggleDarkMode() {
 
 // Gallery image loading with issues
 function loadGalleryImages() {
-    var galleryContainer = document.querySelector(".gallery-container");
+    const galleryContainer = document.querySelector(".gallery-container");
     
     // Hard-coded number of images
-    for (var i = 1; i <= 12; i++) {
-        var imgContainer = document.createElement("div");
+    for (let i = 1; i <= 12; i++) {
+        const imgContainer = document.createElement("div");
         imgContainer.className = "gallery-item";
         
-        var img = document.createElement("img");
+        const img = document.createElement("img");
         img.src = "images/gallery/image" + i + ".jpg";
         // Missing alt text
         // No error handling for missing images
@@ -151,19 +151,19 @@ function register(eventId) {
 
 // Countdown timer for upcoming event - but with bugs
 function startCountdown() {
-    var countdownElement = document.getElementById("countdown");
+    const countdownElement = document.getElementById("countdown");
     // Hard-coded date
-    var eventDate = new Date("2025-04-15T09:00:00");
+    const eventDate = new Date("2025-04-15T09:00:00");
     
-    var interval = setInterval(function() {
-        var now = new Date();
-        var distance = eventDate - now;
+    const interval = setInterval(function() {
+        const now = new Date();
+        const distance = eventDate - now;
         
         // Calculate days, hours, minutes, seconds
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
         
         // Display countdown
         if (countdownElement) {
@@ -180,3 +180,31 @@ function startCountdown() {
 
 // Try to start countdown without checking if element exists
 startCountdown();
+
+// Assuming this file handles general site functionality
+
+document.addEventListener('DOMContentLoaded', function() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+
+    navToggle.addEventListener('click', function() {
+        navMenu.classList.toggle('active');
+    });
+
+    // Smooth scrolling for anchor links
+    const smoothScrollLinks = document.querySelectorAll('a[href^="#"]');
+    smoothScrollLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+});
