@@ -6,6 +6,28 @@
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                flex-direction: column;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+        }
+    </style>
 </head>
 <body style="font-family: 'Poppins', Arial, sans-serif;">
     <header>
@@ -14,6 +36,7 @@
         </div>
         
         <nav id="nav">
+            <div class="hamburger" id="hamburger">&#9776;</div>
             <ul>
                 <li><a href="./index.html">Home</a></li>
                 <li><a href="./about.html">About</a></li>
@@ -138,6 +161,12 @@
         </div>
     </footer>
     
+    <script>
+        // JavaScript to toggle the navigation menu
+        document.getElementById('hamburger').addEventListener('click', function() {
+            document.querySelector('nav ul').classList.toggle('active');
+        });
+    </script>
     <script src="js/main.js"></script>
 </body>
 </html>
