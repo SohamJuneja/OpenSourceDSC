@@ -180,3 +180,17 @@ function startCountdown() {
 
 // Try to start countdown without checking if element exists
 startCountdown();
+
+function updateCountdown(targetDate) {
+    const countdown = document.getElementById('countdown');
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+    const countdownText = `${days} days, ${hours} hours, ${minutes} minutes until next event`;
+    countdown.innerHTML = countdownText;
+    countdown.setAttribute('aria-label', countdownText);
+}

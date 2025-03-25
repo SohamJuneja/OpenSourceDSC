@@ -63,7 +63,14 @@
         <section class="featured-events" aria-labelledby="events-title">
             <h2 id="events-title">Upcoming Events</h2>
 
-            <div id="countdown">Loading...</div>
+            <div id="countdown" 
+                 role="timer" 
+                 aria-live="polite" 
+                 aria-atomic="true"
+                 aria-label="Time until next event">
+                <span class="sr-only">Loading countdown timer...</span>
+                Loading...
+            </div>
 
             <div class="event-cards">
                 <div class="event-card">
