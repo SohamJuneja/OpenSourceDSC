@@ -4,6 +4,8 @@
     <title>Tech Club - Home</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/layout.css">
+    <!-- Import Poppins font from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -23,6 +25,8 @@
         </nav>
         
         <button id="dark-mode-toggle">Dark Mode</button>
+        <!-- Hamburger menu button -->
+        <button class="hamburger-menu" onclick="toggleMenu()">☰</button>
     </header>
 
     <div class="hero-section">
@@ -137,5 +141,11 @@
     </footer>
     
     <script src="js/main.js"></script>
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('nav');
+            nav.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
