@@ -9,7 +9,7 @@ Hey there!
 
 Welcome to **OpenSourceDSC**, a friendly and beginner-friendly repository created by the Developer Student Club (DSC) at NIT Hamirpur!
 
-Whether you're here to make your very first open source contribution or just looking to have some fun collaborating with fellow students — you’re in the right place.
+Whether you're here to make your very first open source contribution or just looking to have some fun collaborating with fellow students — you're in the right place.
 
 ---
 
@@ -74,8 +74,48 @@ Stay updated with all our fun workshops, hackathons, and projects:
 
 ## Final Words
 
-We’re so excited to see you contribute! Every step counts, and you’re officially part of the open-source family now.
+We're so excited to see you contribute! Every step counts, and you're officially part of the open-source family now.
 
 > "The best way to learn is to build, break, fix, and share!"
 
 Happy Contributing!
+
+# Tech Club Website
+
+## Migrating to Tailwind CSS
+
+We are gradually migrating the website from traditional CSS to Tailwind CSS. This improves maintainability and provides a more consistent design system.
+
+### Setup
+
+1. Install dependencies:
+```bash
+npm install
+```
+
+2. Build Tailwind CSS:
+```bash
+npx tailwindcss -i ./css/tailwind.css -o ./css/styles.tailwind.css
+```
+
+3. For development with auto-refresh:
+```bash
+npm run watch:css
+```
+
+### Migration Progress
+
+- [x] Layout CSS (layout.css) - Migrated to Tailwind
+- [ ] Styles CSS (styles.css) - To be migrated
+- [ ] Mobile responsive layout - Improved
+- [ ] Dark mode - To be implemented with Tailwind
+
+### File Structure
+
+- `css/tailwind.css` - Tailwind directives
+- `css/styles.tailwind.css` - Generated Tailwind output
+- `css/styles.css` - Original styles (to be migrated)
+
+### Contributing
+
+When contributing to this project, please create a new branch for each CSS file you're migrating to Tailwind.

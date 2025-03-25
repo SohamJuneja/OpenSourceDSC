@@ -1,0 +1,27 @@
+{
+  "name": "opensourcedsc",
+  "version": "1.0.0",
+  "description": "<br>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "tailwindcss -i ./css/tailwind.css -o ./css/styles.tailwind.css",
+    "watch:css": "tailwindcss -i ./css/tailwind.css -o ./css/styles.tailwind.css --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LSUDOKO/OpenSourceDSC.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LSUDOKO/OpenSourceDSC/issues"
+  },
+  "homepage": "https://github.com/LSUDOKO/OpenSourceDSC#readme",
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.0.16"
+  }
+}
