@@ -28,6 +28,7 @@ class BankAccount:
             return True
         
         print("Insufficient funds")
+        self._log_transaction("FAILED WITHDRAWAL", amount)
         return False
 
     def _log_transaction(self, transaction_type, amount):
@@ -87,7 +88,8 @@ class BankingSystem:
             from_account = random.choice(accounts)
             to_account = random.choice(accounts)
             amount = random.uniform(10, 500)
-            self.bank.transfer_funds(from_account, to_account, amount)
+            if from_account != to_account:
+                self.bank.transfer_funds(from_account, to_account, amount)
 
         threads = []
         for _ in range(num_transactions):

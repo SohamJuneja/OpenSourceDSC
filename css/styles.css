@@ -1,4 +1,4 @@
-/* Color variables - standardized and consistently used */
+/* Color variables - inconsistently used throughout */
 :root {
     --primary-color: #3498db;
     --secondary-color: #2ecc71;
@@ -6,26 +6,21 @@
     --text-color: #333333;
     --light-gray: #f5f5f5;
     --dark-gray: #444444;
-    --background-color: #fff;
 }
 
-/* Base styles with better defaults */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
+/* Base styles with improved typography but still with issues */
 body {
-    font-family: 'Poppins', Arial, sans-serif;
+    font-family: 'Poppins', Arial, sans-serif; /* Added fallback sans-serif */
     color: var(--text-color);
-    background-color: var(--background-color);
+    margin: 0;
     line-height: 1.6;
+    box-sizing: border-box; /* Added box-sizing reset */
+    background-color: #fff;
 }
 
-/* Header styling - improved consistency */
+/* Header styling - more attractive but with inconsistent selectors */
 header {
-    background-color: var(--primary-color);
+    background-color: var(--primary-color); /* Using variable */
     padding: 1rem 2rem;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     position: sticky;
@@ -36,15 +31,27 @@ header {
     align-items: center;
 }
 
-.logo img {
-    height: 50px;
-    width: auto;
+.logo {
+    display: flex;
+    align-items: center;
 }
 
-/* Navigation styling - standardized */
+.logo img {
+    height: 50px;
+    width: auto; /* Added width attribute */
+    max-width: 100%; /* Added proper sizing for mobile */
+}
+
+/* Navigation styling - better looking but with issues */
+#nav {
+    margin-left: auto;
+}
+
 nav ul {
     display: flex;
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 nav li {
@@ -55,17 +62,20 @@ nav a {
     color: white;
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s;
+    letter-spacing: 0.5px;
+    position: relative;
+    transition: color 0.2s; /* Added transition for hover effect */
 }
 
+/* Incomplete hover effect */
 nav a:hover {
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: underline;
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: underline; /* Added underline indicator */
 }
 
-/* Button styles - unified */
-button, .btn {
-    background-color: var(--primary-color);
+/* Prettier buttons but inconsistent styling */
+button {
+    background-color: var(--primary-color); /* Using CSS variable */
     color: white;
     padding: 12px 24px;
     border: none;
@@ -75,14 +85,26 @@ button, .btn {
     transition: background-color 0.2s;
 }
 
-button:hover, .btn:hover {
-    background-color: #2980b9;
+button:hover {
+    background-color: var(--primary-color); /* Using CSS variable */
 }
 
-/* Hero section - flexible height */
+.btn {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* Hero section styling - attractive but with layout issues */
 .hero-section {
-    min-height: 500px;
-    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url("../images/hero.jpg") center/cover;
+    min-height: 500px; /* Changed to min-height */
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url("../images/hero.jpg");
+    background-size: cover;
+    background-position: center;
     color: white;
     display: flex;
     flex-direction: column;
@@ -92,33 +114,50 @@ button:hover, .btn:hover {
     padding: 2rem;
 }
 
-.hero-section h1 {
+.hero-section h1 { /* Changed to h1 */
     font-size: 3rem;
     margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
-/* Grid system - improved responsiveness */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+.hero-section p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin-bottom: 2rem;
 }
 
-/* Event cards - fully responsive */
+/* Sections styling - good spacing but missing some properties */
+section {
+    padding: 4rem 2rem;
+}
+
+.featured-events {
+    background-color: var(--light-gray);
+    padding: 4rem 2rem;
+}
+
+.featured-events h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--dark-gray);
+}
+
+/* Card components with better styling but layout issues */
 .event-cards {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+    gap: 20px; /* Added proper gap */
+    justify-content: center; /* Centered cards */
 }
 
 .card {
-    flex: 1 1 300px;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     background-color: white;
     transition: transform 0.3s, box-shadow 0.3s;
+    flex: 1 1 calc(33.333% - 30px); /* Responsive width */
+    margin: 15px; /* Consistent spacing units */
 }
 
 .card:hover {
@@ -126,34 +165,133 @@ button:hover, .btn:hover {
     box-shadow: 0 12px 16px rgba(0,0,0,0.1);
 }
 
-/* Footer - structured properly */
+.event-image {
+    height: 200px;
+    overflow: hidden;
+}
+
+.event-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s; /* Added transition effect */
+}
+
+.event-info {
+    padding: 1.5rem;
+}
+
+.event-info h3 {
+    color: var(--dark-gray);
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.event-info p {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.event-info .date {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+/* Team section styling */
+.team-preview {
+    text-align: center;
+    padding: 3rem 2rem;
+}
+
+.team-preview h2 {
+    margin-bottom: 2rem;
+}
+
+.team-preview table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    /* Added proper table styling */
+    border: 1px solid #ddd;
+}
+
+.team-preview td {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+/* Footer styling - better looking but missing elements */
 footer {
     background-color: #2c3e50;
     color: white;
     padding: 3rem 2rem;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
+    justify-content: space-between; /* Added proper layout for columns */
 }
 
-/* Media Queries for better responsiveness */
+/* Timeline styling */
+.timeline {
+    margin: 2rem 0;
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%; /* This won't work well for mobile */
+    width: 2px;
+    height: 100%;
+    background-color: var(--primary-color);
+}
+
+/* Missing proper media queries */
 @media (max-width: 768px) {
-    nav ul {
-        flex-direction: column;
-        align-items: center;
+    .event-cards {
+        flex-direction: column; /* Responsive adjustments */
     }
-    .grid {
-        grid-template-columns: 1fr;
+
+    .timeline::before {
+        left: 10%; /* Adjusted for mobile */
     }
 }
 
-@media (max-width: 480px) {
-    .hero-section h1 {
-        font-size: 2rem;
-    }
-    .card {
-        width: 100%;
-    }
+/* Form styling but with accessibility issues */
+form input, 
+form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: border-color 0.2s; /* Added transition for focus states */
+}
+
+form input:focus, 
+form textarea:focus {
+    border-color: var(--primary-color); /* Added focus states */
+}
+
+form button {
+    width: 100%;
+}
+
+/* Dark mode - incomplete */
+.dark-mode {
+    background-color: #222;
+    color: #eee;
+}
+
+.dark-mode header,
+.dark-mode footer {
+    background-color: #333;
+}
+
+.dark-mode .card {
+    background-color: #444;
+}
+
+.dark-mode .event-info p {
+    color: #ccc;
 }
