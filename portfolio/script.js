@@ -46,12 +46,26 @@ function setupContactForm() {
         }
         
         console.log('Form submitted', { name, email, message });
+        alert('Message sent successfully!');
+        form.reset();
+    });
+}
+
+function smoothScroll() {
+    document.querySelectorAll('nav ul li a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
     });
 }
 
 function initPage() {
     renderProjects();
     setupContactForm();
+    smoothScroll();
 }
 
 document.addEventListener('DOMContentLoaded', initPage);
