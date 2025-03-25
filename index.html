@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <title>Tech Club - Home</title>
@@ -33,13 +33,13 @@
 </head>
 
 <body style="font-family: 'Poppins', Arial, sans-serif;">
-    <header>
+    <header role="banner">
         <div class="logo">
-            <img src="images/logo.png" alt="logo">
+            <img src="images/logo.png" alt="Tech Club logo">
         </div>
 
-        <nav id="nav">
-            <div class="hamburger" id="hamburger">&#9776;</div>
+        <nav id="nav" role="navigation" aria-label="Main navigation">
+            <div class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">&#9776;</div>
             <ul>
                 <li><a href="./index.html">Home</a></li>
                 <li><a href="./about.html">About</a></li>
@@ -50,95 +50,97 @@
             </ul>
         </nav>
 
-        <button id="dark-mode-toggle">Dark Mode</button>
+        <button id="dark-mode-toggle" aria-label="Toggle dark mode">Dark Mode</button>
     </header>
 
-    <section class="hero-section">
-        <h1>Welcome to the Tech Club</h1>
-        <p>Where innovation meets community</p>
-        <a href="join.html" class="btn">Join Us</a>
-    </section>
+    <main role="main">
+        <section class="hero-section" aria-labelledby="hero-title">
+            <h1 id="hero-title">Welcome to the Tech Club</h1>
+            <p>Where innovation meets community</p>
+            <a href="join.html" class="btn">Join Us</a>
+        </section>
 
-    <section class="featured-events">
-        <h2>Upcoming Events</h2>
+        <section class="featured-events" aria-labelledby="events-title">
+            <h2 id="events-title">Upcoming Events</h2>
 
-        <div id="countdown">Loading...</div>
+            <div id="countdown">Loading...</div>
 
-        <div class="event-cards">
-            <div class="event-card">
-                <div class="event-image">
-                    <img src="images/event1.jpg" alt="event1-image">
+            <div class="event-cards">
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="images/event1.jpg" alt="event1-image">
+                    </div>
+                    <div class="event-info">
+                        <h3>Hackathon 2025</h3>
+                        <p class="date">April 15, 2025</p>
+                        <p>Join us for a 24-hour coding marathon!</p>
+                        <a href="register-hackathon.html" class="register-btn">Register Now</a>
+                    </div>
                 </div>
-                <div class="event-info">
-                    <h3>Hackathon 2025</h3>
-                    <p class="date">April 15, 2025</p>
-                    <p>Join us for a 24-hour coding marathon!</p>
-                    <a href="register-hackathon.html" class="register-btn">Register Now</a>
+
+                <div class="event-card">
+                    <div class="event-image">
+                        <img src="images/event2.jpg" alt="event2-image">
+                    </div>
+                    <div class="event-info">
+                        <h3>Workshop Series</h3>
+                        <p class="date">Every Saturday</p>
+                        <p>Learn new technologies with our experts</p>
+                        <a href="register-workshop.html" class="register-btn">Register Now</a>
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-info">
+                        <h3>Tech Talk</h3>
+                        <p class="date">April 30, 2025</p>
+                        <p>AI Ethics and the Future of Work</p>
+                        <a href="register-techtalk.html" class="register-btn">Register Now</a>
+                    </div>
                 </div>
             </div>
 
-            <div class="event-card">
-                <div class="event-image">
-                    <img src="images/event2.jpg" alt="event2-image">
+            <div class="view-all">
+                <a href="events.html" class="btn">View All Events</a>
+            </div>
+        </section>
+
+        <section class="achievements" aria-labelledby="achievements-title">
+            <h2 id="achievements-title">Our Impact</h2>
+            <div class="grid-3">
+                <div class="achievement-card">
+                    <h3>500+</h3>
+                    <p>Active Members</p>
                 </div>
-                <div class="event-info">
-                    <h3>Workshop Series</h3>
-                    <p class="date">Every Saturday</p>
-                    <p>Learn new technologies with our experts</p>
-                    <a href="register-workshop.html" class="register-btn">Register Now</a>
+                <div class="achievement-card">
+                    <h3>20+</h3>
+                    <p>Events Per Year</p>
+                </div>
+                <div class="achievement-card">
+                    <h3>50+</h3>
+                    <p>Open Source Contributions</p>
                 </div>
             </div>
+        </section>
 
-            <div class="event-card">
-                <div class="event-info">
-                    <h3>Tech Talk</h3>
-                    <p class="date">April 30, 2025</p>
-                    <p>AI Ethics and the Future of Work</p>
-                    <a href="register-techtalk.html" class="register-btn">Register Now</a>
-                </div>
-            </div>
-        </div>
+        <section class="newsletter" aria-labelledby="newsletter-title">
+            <h2 id="newsletter-title">Stay Updated</h2>
+            <p>Subscribe to our newsletter for the latest events and tech news.</p>
 
-        <div class="view-all">
-            <a href="events.html" class="btn">View All Events</a>
-        </div>
-    </section>
+            <form role="form" aria-label="Newsletter subscription">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Your Email Address" aria-required="true" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </section>
+    </main>
 
-    <section class="achievements">
-        <h2>Our Impact</h2>
-        <div class="grid-3">
-            <div class="achievement-card">
-                <h3>500+</h3>
-                <p>Active Members</p>
-            </div>
-            <div class="achievement-card">
-                <h3>20+</h3>
-                <p>Events Per Year</p>
-            </div>
-            <div class="achievement-card">
-                <h3>50+</h3>
-                <p>Open Source Contributions</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="newsletter">
-        <h2>Stay Updated</h2>
-        <p>Subscribe to our newsletter for the latest events and tech news.</p>
-
-        <form>
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" placeholder="Your Email Address" aria-required="true" required>
-            <button type="submit">Subscribe</button>
-        </form>
-    </section>
-
-    <footer>
+    <footer role="contentinfo">
         <div class="footer-col">
             <h3>Tech Club</h3>
             <p>Fostering innovation and community among tech enthusiasts.</p>
         </div>
-        <div class="footer-col">
+        <nav class="footer-col" role="navigation" aria-label="Footer navigation">
             <h3>Quick Links</h3>
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -146,7 +148,7 @@
                 <li><a href="events.html">Events</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
-        </div>
+        </nav>
         <div class="footer-col">
             <h3>Contact Us</h3>
             <p>Email: info@techclub.edu</p>
