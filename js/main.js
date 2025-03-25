@@ -6,16 +6,7 @@ var navMenu;
 var darkModeToggle;
 var currentMode;
 
-// Mobile menu toggle - functional but with issues
-function toggleMenu() {
-    if (navMenu.style.display === "block") {
-        navMenu.style.display = "none";
-    } else {
-        navMenu.style.display = "block";
-    }
-    // Using direct style manipulation instead of classList
-    // Not using accessibility attributes
-}
+
 
 // Event listener implementation with issues
 window.onload = function() {
@@ -180,3 +171,26 @@ function startCountdown() {
 
 // Try to start countdown without checking if element exists
 startCountdown();
+
+// Mobile menu toggle
+document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const nav = document.getElementById('nav');
+    
+    if (mobileMenuToggle && nav) {
+        mobileMenuToggle.addEventListener('click', function() {
+            nav.classList.toggle('active');
+            // Prevent scrolling when menu is open
+            document.body.classList.toggle('menu-open');
+        });
+    }
+    
+    // Close menu when clicking on a link
+    const navLinks = document.querySelectorAll('#nav a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            nav.classList.remove('active');
+            document.body.classList.remove('menu-open');
+        });
+    });
+});

@@ -8,10 +8,9 @@
     --dark-gray: #444444;
 }
 
-/* Base styles with improved typography but still with issues */
+
 body {
-    font-family: 'Poppins', Arial;
-    /* Missing fallback sans-serif */
+    font-family: 'Poppins', Arial, sans-serif;
     color: var(--text-color);
     margin: 0;
     line-height: 1.6;
@@ -44,23 +43,23 @@ header {
 }
 
 /* Navigation styling - better looking but with issues */
-#nav {
-    /* Inconsistent ID vs class usage */
+.nav {
+    /* Updated from #nav to .nav */
     margin-left: auto;
 }
 
-nav ul {
+.nav ul {
     display: flex;
     list-style: none;
     margin: 0;
     padding: 0;
 }
 
-nav li {
+.nav li {
     margin-left: 2rem;
 }
 
-nav a {
+.nav a {
     color: white;
     text-decoration: none;
     font-weight: 500;
@@ -70,7 +69,7 @@ nav a {
 }
 
 /* Incomplete hover effect */
-nav a:hover {
+.nav a:hover {
     color: rgba(255, 255, 255, 0.9);
     /* Missing underline or other indicator */
 }
@@ -117,7 +116,7 @@ button:hover {
     padding: 2rem;
 }
 
-.hero-section h3 { /* Should be h1 */
+.hero-section h1 { /* Should be h1 */
     font-size: 3rem;
     margin-bottom: 1rem;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
@@ -247,9 +246,60 @@ footer {
     background-color: var(--primary-color);
 }
 
+/* Mobile menu button */
+#mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10;
+}
+
+#mobile-menu-toggle .bar {
+    height: 3px;
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+}
+
 /* Missing proper media queries */
 @media (max-width: 768px) {
-    /* Empty media query */
+    #mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background-color: #2a75bb;
+        padding: 70px 20px 20px;
+        transition: right 0.3s ease;
+        box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+    }
+    
+    .nav.active {
+        right: 0;
+    }
+    
+    .nav ul {
+        flex-direction: column;
+    }
+    
+    .nav li {
+        margin: 1rem 0;
+    }
+    
+    #dark-mode-toggle {
+        margin-left: 10px;
+    }
 }
 
 /* Form styling but with accessibility issues */
