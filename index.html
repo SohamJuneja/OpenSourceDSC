@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Tech Club - Home</title>
     <link rel="stylesheet" href="css/styles.css">
@@ -29,12 +30,13 @@
         }
     </style>
 </head>
+
 <body style="font-family: 'Poppins', Arial, sans-serif;">
     <header>
         <div class="logo">
             <img src="images/logo.png" alt="logo">
         </div>
-        
+
         <nav id="nav">
             <div class="hamburger" id="hamburger">&#9776;</div>
             <ul>
@@ -46,21 +48,21 @@
                 <li><a href="./contactus.html">Contact</a></li>
             </ul>
         </nav>
-        
+
         <button id="dark-mode-toggle">Dark Mode</button>
     </header>
 
     <div class="hero-section">
         <h1>Welcome to the Tech Club</h1>
         <p>Where innovation meets community</p>
-        <button>Join Us</button>
+        <a href="join.html" class="btn">Join Us</a>
     </div>
 
     <div class="featured-events">
         <h2>Upcoming Events</h2>
-        
+
         <div id="countdown">Loading...</div>
-        
+
         <div class="event-cards">
             <div class="card">
                 <div id="event1" class="event-image">
@@ -73,7 +75,7 @@
                     <button class="register-btn">Register Now</button>
                 </div>
             </div>
-            
+
             <div class="card">
                 <div class="event-image">
                     <img src="images/event2.jpg">
@@ -85,7 +87,7 @@
                     <button class="register-btn">Register Now</button>
                 </div>
             </div>
-            
+
             <div class="card">
                 <div class="event-info">
                     <h3>Tech Talk</h3>
@@ -95,12 +97,12 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="view-all">
             <a href="events.html" class="btn">View All Events</a>
         </div>
     </div>
-    
+
     <div class="achievements">
         <h2>Our Impact</h2>
         <div class="grid-3">
@@ -160,13 +162,14 @@
             <p>© Tech Club 2025. All rights reserved.</p>
         </div>
     </footer>
-    
+
     <script>
         // JavaScript to toggle the navigation menu
-        document.getElementById('hamburger').addEventListener('click', function() {
+        document.getElementById('hamburger').addEventListener('click', function () {
             document.querySelector('nav ul').classList.toggle('active');
         });
     </script>
     <script src="js/main.js"></script>
 </body>
+
 </html>
