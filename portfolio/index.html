@@ -3,46 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Developer Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <title>Tech Club - Home</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="./output.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/layout.css">
 </head>
 <body>
     <header>
-        <nav>
+        <h1 class="text-3xl font-bold ">
+            <div classname="bg-red-50">Hello world!</div>
+          </h1>
+        <div class="logo">
+            <!-- Added meaningful alt attribute for accessibility -->
+            <img src="images/logo.png" alt="Tech Club Logo - Fostering Innovation and Community">
+        </div>
+        
+        <nav id="nav" aria-label="Main Navigation">
             <ul>
                 <li><a href="#home">Home</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="team.html">Team</a></li>
+                <li><a href="contactus.html">Contact</a></li>
             </ul>
         </nav>
+        
+        <button id="dark-mode-toggle" aria-label="Toggle Dark Mode">Dark Mode</button>
     </header>
 
-    <main>
-        <section id="home">
-            <h1>Developer Name</h1>
-            <p>Web Developer | Designer | Problem Solver</p>
-        </section>
-
-        <section id="projects">
-            <h2>My Projects</h2>
-            <div class="project-container">
-            </div>
-        </section>
-
-        <section id="contact">
-            <h2>Contact Me</h2>
-            <form id="contact-form">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="message" placeholder="Your Message" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
-        </section>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 Developer Name. All Rights Reserved.</p>
-    </footer>
-</body>
-</html>

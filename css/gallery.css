@@ -1,5 +1,5 @@
 /* Gallery specific styles with intentional issues */
-
+@import "tailwindcss";
 .gallery-header {
     text-align: center;
     padding: 3rem 1rem;

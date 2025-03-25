@@ -1,5 +1,5 @@
 /* Layout system with improved design but intentional issues */
-
+@import "tailwindcss";
 /* Container with better defaults but still problematic */
 .container {
     width: 1200px; /* Fixed width */
