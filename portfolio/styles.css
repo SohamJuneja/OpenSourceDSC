@@ -49,5 +49,126 @@ nav ul li a {
     padding: 0.5rem;
 }
 
+/* Accessibility - Skip Link */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    padding: 8px;
+    background: #4a90e2;
+    color: white;
+    z-index: 100;
+    transition: top 0.2s;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Focus Styles */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus {
+    outline: 3px solid #4a90e2;
+    outline-offset: 2px;
+}
+
+/* Form Groups */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+/* Form Validation Messages */
+.error-message,
+.success-message {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+}
+
+.error-message {
+    background-color: #ffebee;
+    color: #c62828;
+    border: 1px solid #ef5350;
+}
+
+.success-message {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    border: 1px solid #66bb6a;
+}
+
+/* Loading State */
+button[aria-busy="true"] {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Project Cards */
+.project-card {
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.project-card .technologies {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.project-card .technologies span {
+    padding: 0.25rem 0.75rem;
+    background: #e9ecef;
+    border-radius: 16px;
+    font-size: 0.875rem;
+}
+
+/* Home Section Styling */
+#home {
+    text-align: center;
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: white;
+}
+
+#home h1 {
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+#home p {
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+/* High Contrast Support */
+@media (prefers-contrast: high) {
+    .project-card {
+        border: 2px solid currentColor;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        border: 2px solid currentColor;
+    }
+    
+    #home {
+        border: 2px solid currentColor;
+    }
+}
+
 @media screen and (max-width: 768px) {
 }

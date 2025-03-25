@@ -2,46 +2,59 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Developer Portfolio showcasing web development projects and skills">
     <title>Developer Portfolio</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
 </head>
 <body>
-    <header>
-        <nav>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <header role="banner">
+        <nav role="navigation" aria-label="Main navigation">
             <ul>
-                <li><a href="#home">Home</a></li>
+                <li><a href="#home" aria-current="page">Home</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
-        <section id="home">
-            <h1>Developer Name</h1>
-            <p>Web Developer | Designer | Problem Solver</p>
+    <main id="main-content" role="main">
+        <section id="home" aria-labelledby="home-title">
+            <h1 id="home-title">Developer Name</h1>
+            <p role="doc-subtitle">Web Developer | Designer | Problem Solver</p>
         </section>
 
-        <section id="projects">
-            <h2>My Projects</h2>
-            <div class="project-container">
+        <section id="projects" aria-labelledby="projects-title">
+            <h2 id="projects-title">My Projects</h2>
+            <div class="project-container" role="list" aria-label="Project showcase">
             </div>
         </section>
 
-        <section id="contact">
-            <h2>Contact Me</h2>
-            <form id="contact-form">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="message" placeholder="Your Message" required></textarea>
-                <button type="submit">Send Message</button>
+        <section id="contact" aria-labelledby="contact-title">
+            <h2 id="contact-title">Contact Me</h2>
+            <form id="contact-form" role="form" aria-label="Contact form">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required aria-required="true">
+                </div>
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" name="email" required aria-required="true">
+                </div>
+                <div class="form-group">
+                    <label for="message">Your Message</label>
+                    <textarea id="message" name="message" required aria-required="true"></textarea>
+                </div>
+                <button type="submit" aria-label="Send message">Send Message</button>
             </form>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2024 Developer Name. All Rights Reserved.</p>
+    <footer role="contentinfo">
+        <p>&copy; <time datetime="2024">2024</time> Developer Name. All Rights Reserved.</p>
     </footer>
 </body>
 </html>
