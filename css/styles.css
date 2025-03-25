@@ -368,3 +368,136 @@ nav a:focus {
     white-space: nowrap;
     border: 0;
 }
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px;
+    z-index: 100;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+.site-footer {
+    background-color: var(--footer-bg, #f8f9fa);
+    padding: 4rem 2rem 2rem;
+    margin-top: 4rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-col {
+    padding: 0 1rem;
+}
+
+.footer-col h3 {
+    color: var(--heading-color, #2c3e50);
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.footer-col h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -0.5rem;
+    width: 50px;
+    height: 2px;
+    background-color: var(--primary-color);
+}
+
+.footer-col.links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-col.links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-col.links a {
+    color: var(--text-color, #4a5568);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-col.links a:hover,
+.footer-col.links a:focus {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    padding: 0;
+    list-style: none;
+}
+
+.social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: white;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.social-links a:hover,
+.social-links a:focus {
+    transform: translateY(-3px);
+    background-color: var(--secondary-color);
+}
+
+.footer-bottom {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color, #e2e8f0);
+    text-align: center;
+}
+
+.copyright {
+    color: var(--text-muted, #718096);
+    font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
+    .site-footer {
+        padding: 3rem 1rem 1.5rem;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .footer-col {
+        padding: 0;
+        text-align: center;
+    }
+    
+    .footer-col h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+}

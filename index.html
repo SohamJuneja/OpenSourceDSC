@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Tech Club - A community of tech enthusiasts organizing events, workshops and hackathons">
     <title>Tech Club - Home</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/layout.css">
@@ -33,36 +35,43 @@
 </head>
 
 <body style="font-family: 'Poppins', Arial, sans-serif;">
+    <a href="#main-content" class="skip-link sr-only">Skip to main content</a>
+    
     <header role="banner">
-        <div class="logo">
+        <div class="logo" role="img" aria-label="Tech Club">
             <img src="images/logo.png" alt="Tech Club logo">
         </div>
 
         <nav id="nav" role="navigation" aria-label="Main navigation">
-            <div class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">&#9776;</div>
-            <ul>
-                <li><a href="./index.html">Home</a></li>
-                <li><a href="./about.html">About</a></li>
-                <li><a href="./events.html">Events</a></li>
-                <li><a href="./gallery.html">Gallery</a></li>
-                <li><a href="./team.html">Team</a></li>
-                <li><a href="./contact.html">Contact</a></li>
+            <button class="hamburger" id="hamburger" 
+                    aria-label="Toggle menu" 
+                    aria-expanded="false"
+                    aria-controls="nav-menu">&#9776;</button>
+            <ul id="nav-menu" role="menubar">
+                <li role="none"><a href="./index.html" role="menuitem" aria-current="page">Home</a></li>
+                <li role="none"><a href="./about.html" role="menuitem">About</a></li>
+                <li role="none"><a href="./events.html" role="menuitem">Events</a></li>
+                <li role="none"><a href="./gallery.html" role="menuitem">Gallery</a></li>
+                <li role="none"><a href="./team.html" role="menuitem">Team</a></li>
+                <li role="none"><a href="./contact.html" role="menuitem">Contact</a></li>
             </ul>
         </nav>
 
-        <button id="dark-mode-toggle" aria-label="Toggle dark mode">Dark Mode</button>
+        <button id="dark-mode-toggle" 
+                aria-label="Toggle dark mode"
+                aria-pressed="false">Dark Mode</button>
     </header>
 
-    <main role="main">
+    <main id="main-content" role="main" tabindex="-1">
         <section class="hero-section" aria-labelledby="hero-title">
             <h1 id="hero-title">Welcome to the Tech Club</h1>
             <p>Where innovation meets community</p>
-            <a href="join.html" class="btn">Join Us</a>
+            <a href="join.html" class="btn" role="button">Join Us</a>
         </section>
 
         <section class="featured-events" aria-labelledby="events-title">
             <h2 id="events-title">Upcoming Events</h2>
-
+            
             <div id="countdown" 
                  role="timer" 
                  aria-live="polite" 
@@ -72,59 +81,65 @@
                 Loading...
             </div>
 
-            <div class="event-cards">
-                <div class="event-card">
+            <div class="event-cards" role="list">
+                <article class="event-card" role="listitem">
                     <div class="event-image">
-                        <img src="images/event1.jpg" alt="event1-image">
+                        <img src="images/event1.jpg" alt="Hackathon 2025 - Participants coding at previous hackathon">
                     </div>
                     <div class="event-info">
-                        <h3>Hackathon 2025</h3>
-                        <p class="date">April 15, 2025</p>
+                        <h3 id="event1-title">Hackathon 2025</h3>
+                        <time class="date" datetime="2025-04-15">April 15, 2025</time>
                         <p>Join us for a 24-hour coding marathon!</p>
-                        <a href="register-hackathon.html" class="register-btn">Register Now</a>
+                        <a href="register-hackathon.html" 
+                           class="register-btn"
+                           aria-labelledby="event1-title">Register Now</a>
                     </div>
-                </div>
+                </article>
 
-                <div class="event-card">
+                <article class="event-card" role="listitem">
                     <div class="event-image">
-                        <img src="images/event2.jpg" alt="event2-image">
+                        <img src="images/event2.jpg" alt="Workshop Series - Participants learning new technologies">
                     </div>
                     <div class="event-info">
-                        <h3>Workshop Series</h3>
-                        <p class="date">Every Saturday</p>
+                        <h3 id="event2-title">Workshop Series</h3>
+                        <time class="date" datetime="2025-04-15">Every Saturday</time>
                         <p>Learn new technologies with our experts</p>
-                        <a href="register-workshop.html" class="register-btn">Register Now</a>
+                        <a href="register-workshop.html" 
+                           class="register-btn"
+                           aria-labelledby="event2-title">Register Now</a>
                     </div>
-                </div>
+                </article>
 
-                <div class="event-card">
+                <article class="event-card" role="listitem">
                     <div class="event-info">
-                        <h3>Tech Talk</h3>
-                        <p class="date">April 30, 2025</p>
+                        <h3 id="event3-title">Tech Talk</h3>
+                        <time class="date" datetime="2025-04-30">April 30, 2025</time>
                         <p>AI Ethics and the Future of Work</p>
-                        <a href="register-techtalk.html" class="register-btn">Register Now</a>
+                        <a href="register-techtalk.html" 
+                           class="register-btn"
+                           aria-labelledby="event3-title">Register Now</a>
                     </div>
-                </div>
+                </article>
             </div>
 
             <div class="view-all">
-                <a href="events.html" class="btn">View All Events</a>
+                <a href="events.html" class="btn" role="button">View All Events</a>
             </div>
         </section>
 
         <section class="achievements" aria-labelledby="achievements-title">
             <h2 id="achievements-title">Our Impact</h2>
-            <div class="grid-3">
-                <div class="achievement-card">
-                    <h3>500+</h3>
+            <div class="grid-3" role="list"></div>
+                <div class="achievement-card" role="listitem">
+                    <h3><span aria-label="More than 500">500+</span></h3>
                     <p>Active Members</p>
                 </div>
-                <div class="achievement-card">
-                    <h3>20+</h3>
+                <div class="achievement-card" role="listitem">
+                    <h3><span aria-label="More than 20">20+</span></h3>
                     <p>Events Per Year</p>
                 </div>
-                <div class="achievement-card">
-                    <h3>50+</h3>
+                <div class="achievement-card" role="listitem">
+                    <h3><span aria-label="More than 50">50+</span></h3>
                     <p>Open Source Contributions</p>
                 </div>
             </div>
@@ -134,62 +149,96 @@
             <h2 id="newsletter-title">Stay Updated</h2>
             <p>Subscribe to our newsletter for the latest events and tech news.</p>
 
-            <form role="form" aria-label="Newsletter subscription">
+            <form role="form" 
+                  aria-labelledby="newsletter-title"
+                  aria-describedby="newsletter-desc">
+                <p id="newsletter-desc" class="sr-only">Fill out this form to receive our newsletter</p>
                 <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" placeholder="Your Email Address" aria-required="true" required>
+                <input type="email" 
+                       id="email" 
+                       name="email" 
+                       placeholder="Your Email Address" 
+                       aria-required="true" 
+                       required>
                 <button type="submit">Subscribe</button>
             </form>
         </section>
     </main>
 
-    <footer role="contentinfo">
-        <div class="footer-col">
-            <h3>Tech Club</h3>
-            <p>Fostering innovation and community among tech enthusiasts.</p>
-        </div>
-        <nav class="footer-col" role="navigation" aria-label="Footer navigation">
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="events.html">Events</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="footer-col">
-            <h3>Contact Us</h3>
-            <p>Email: info@techclub.edu</p>
-            <p>Location: Tech Building, Room 101</p>
-        </div>
-        <div class="footer-col">
-            <h3>Follow Us</h3>
-            <div class="social-links">
-                <a href="https://www.facebook.com" aria-label="Facebook" target="_blank">
-                    <i class="fab fa-facebook-f" aria-hidden="true"></i>
-                </a>
-                <a href="https://www.twitter.com" aria-label="Twitter" target="_blank">
-                    <i class="fab fa-twitter" aria-hidden="true"></i>
-                </a>
-                <a href="https://www.instagram.com" aria-label="Instagram" target="_blank">
-                    <i class="fab fa-instagram" aria-hidden="true"></i>
-                </a>
-                <a href="https://www.linkedin.com" aria-label="LinkedIn" target="_blank">
-                    <i class="fab fa-linkedin-in" aria-hidden="true"></i>
-                </a>
+    <footer role="contentinfo" class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-col about">
+                <h3 id="about-title">Tech Club</h3>
+                <p id="about-desc">Fostering innovation and community among tech enthusiasts.</p>
+            </div>
+            
+            <nav class="footer-col links" 
+                 role="navigation" 
+                 aria-labelledby="footer-nav-title">
+                <h3 id="footer-nav-title">Quick Links</h3>
+                <ul role="list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="footer-col contact">
+                <h3 id="contact-title">Contact Us</h3>
+                <address aria-labelledby="contact-title">
+                    <p>Email: <a href="mailto:info@techclub.edu">info@techclub.edu</a></p>
+                    <p>Location: Tech Building, Room 101</p>
+                </address>
+            </div>
+            
+            <div class="footer-col social">
+                <h3 id="social-title">Follow Us</h3>
+                <ul class="social-links" 
+                    role="list" 
+                    aria-labelledby="social-title">
+                    <li>
+                        <a href="https://www.facebook.com" 
+                           aria-label="Follow us on Facebook" 
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.twitter.com" 
+                           aria-label="Follow us on Twitter" 
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            <i class="fab fa-twitter" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com" 
+                           aria-label="Follow us on Instagram" 
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com" 
+                           aria-label="Follow us on LinkedIn" 
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
         
-        <div class="copyright">
-            <p>© Tech Club 2025. All rights reserved.</p>
+        <div class="footer-bottom">
+            <p class="copyright">© Tech Club 2025. All rights reserved.</p>
         </div>
     </footer>
 
-    <script>
-        // JavaScript to toggle the navigation menu
-        document.getElementById('hamburger').addEventListener('click', function () {
-            document.querySelector('nav ul').classList.toggle('active');
-        });
-    </script>
+    <script src="js/navigation.js"></script>
     <script src="js/main.js"></script>
 </body>
 
