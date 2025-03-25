@@ -44,7 +44,7 @@ header {
 }
 
 /* Navigation styling - better looking but with issues */
-#nav {
+nav {
     /* Inconsistent ID vs class usage */
     margin-left: auto;
 }
