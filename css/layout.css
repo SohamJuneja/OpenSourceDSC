@@ -1,39 +1,38 @@
-/* Layout system with improved design but intentional issues */
+/* Improved Layout System */
 
-/* Container with better defaults but still problematic */
+/* Container with better responsiveness */
 .container {
-    width: 1200px; /* Fixed width */
+    max-width: 1200px;
+    width: 100%;
     margin: 0 auto;
     padding: 0 15px;
-    /* No max-width for proper responsiveness */
 }
 
-/* Section layouts - better spacing */
+/* Section layouts */
 section {
     margin-bottom: 4rem;
 }
 
-/* Grid system - better but with issues */
+/* Grid system with responsiveness */
 .grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    /* No gap property */
-    /* No media queries */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
 }
 
 .grid-2 {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
 }
 
 .grid-4 {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
 }
 
-/* Hero section layout - more modern but still with issues */
+/* Hero section improvements */
 .hero-section {
     position: relative;
     min-height: 500px;
@@ -42,18 +41,20 @@ section {
     justify-content: center;
     align-items: center;
     text-align: center;
-    /* No responsive adjustments */
+    padding: 2rem;
 }
 
-/* Events display - flexbox layout */
+/* Events display improvements */
 .events-container {
     display: flex;
     flex-wrap: wrap;
-    margin: -15px; /* Negative margin technique - can be confusing */
+    gap: 20px;
+    justify-content: center;
 }
 
 .event-card {
-    flex: 0 0 calc(33.333% - 30px); /* Fixed calculation - not responsive */
+    flex: 1 1 calc(33.333% - 30px);
+    max-width: 400px;
     margin: 15px;
     border-radius: 8px;
     overflow: hidden;
@@ -78,13 +79,19 @@ section {
 }
 
 .event-card .register {
+    display: block;
     padding: 10px 20px;
     background-color: #3498db;
     color: white;
     text-align: center;
     cursor: pointer;
-    /* Not accessible - should be a button */
-    /* No hover state */
+    border: none;
+    width: 100%;
+    transition: background 0.3s;
+}
+
+.event-card .register:hover {
+    background-color: #217dbb;
 }
 
 /* About page layout */
@@ -105,10 +112,9 @@ section {
     border-radius: 8px;
     margin: 2rem auto;
     max-width: 800px;
-    /* No responsive adjustments */
 }
 
-/* Timeline layout - more visual but with positioning issues */
+/* Timeline layout fixes */
 .timeline {
     position: relative;
     max-width: 800px;
@@ -129,11 +135,9 @@ section {
 .timeline > div {
     position: relative;
     margin-bottom: 2rem;
-    /* No proper structure for timeline items */
-    /* No responsive behavior */
 }
 
-/* Form layout with issues */
+/* Form layout improvements */
 .propose-event {
     max-width: 600px;
     margin: 3rem auto;
@@ -148,45 +152,50 @@ section {
     margin-bottom: 1.5rem;
 }
 
-/* Mobile menu issues */
+/* Mobile menu visibility */
 .mobile-toggle {
-    display: none; /* Hidden on desktop */
-    /* No media query to show on mobile */
+    display: block;
 }
 
-/* Problematic footer layout */
+/* Footer layout fixes */
 footer {
     display: flex;
     flex-wrap: wrap;
-    /* No proper column structure */
-    /* No proper spacing */
+    justify-content: space-between;
+    padding: 2rem;
 }
 
-/* Responsive issues - incomplete media queries */
+/* Responsive adjustments */
 @media (max-width: 1200px) {
     .container {
-        width: 100%; /* Good but missing max-width */
+        max-width: 100%;
     }
 }
 
 @media (max-width: 768px) {
-    /* Nav is missing a mobile design */
-    
     .grid,
     .grid-2,
     .grid-4 {
-        /* Missing responsive grid adjustments */
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     }
     
     .event-card {
-        /* Missing responsive adjustments */
+        flex: 1 1 100%;
     }
     
     .timeline::before {
-        /* Should adjust position for mobile */
+        left: 10px;
     }
 }
 
 @media (max-width: 480px) {
-    /* Missing additional mobile adjustments */
+    .hero-section {
+        padding: 1rem;
+    }
+    .mission {
+        padding: 2rem;
+    }
+    .event-card {
+        flex: 1 1 100%;
+    }
 }
