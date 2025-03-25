@@ -273,3 +273,13 @@ form button {
     color: #eee;
     /* Missing comprehensive styling for all components */
 }
+.social-links a {
+    font-size: 24px; 
+    color: #555; 
+    margin-right: 15px;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: #007bff; /* Change color on hover */
+}
