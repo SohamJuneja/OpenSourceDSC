@@ -1,30 +1,27 @@
-/* Color variables */
+/* Color variables - inconsistently used throughout */
 :root {
     --primary-color: #3498db;
     --secondary-color: #2ecc71;
     --accent-color: #e74c3c;
-    --text-color: #ffffff;
+    --text-color: #333333;
     --light-gray: #f5f5f5;
     --dark-gray: #444444;
-    --footer-bg: #2c3e50;
-    --border-color: #e2e8f0;
-    --text-muted: #718096;
-    --heading-color: #ffffff;
 }
 
-/* Base styles */
+/* Base styles with improved typography but still with issues */
 body {
-    font-family: 'Poppins', Arial, sans-serif;
+    font-family: 'Poppins', Arial;
+    /* Missing fallback sans-serif */
     color: var(--text-color);
     margin: 0;
     line-height: 1.6;
-    box-sizing: border-box;
+    /* No box-sizing reset */
     background-color: #fff;
 }
 
-/* Header styling */
+/* Header styling - more attractive but with inconsistent selectors */
 header {
-    background-color: var(--primary-color);
+    background-color: #2a75bb; /* Not using variable */
     padding: 1rem 2rem;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     position: sticky;
@@ -42,11 +39,13 @@ header {
 
 .logo img {
     height: 50px;
-    width: auto;
+    /* Missing width attribute */
+    /* Missing proper sizing for mobile */
 }
 
-/* Navigation styling */
+/* Navigation styling - better looking but with issues */
 nav {
+    /* Inconsistent ID vs class usage */
     margin-left: auto;
 }
 
@@ -67,16 +66,18 @@ nav a {
     font-weight: 500;
     letter-spacing: 0.5px;
     position: relative;
-    transition: color 0.3s ease;
+    /* Missing transition for hover effect */
 }
 
+/* Incomplete hover effect */
 nav a:hover {
     color: rgba(255, 255, 255, 0.9);
+    /* Missing underline or other indicator */
 }
 
-/* Button styling */
+/* Prettier buttons but inconsistent styling */
 button {
-    background-color: var(--primary-color);
+    background-color: #3498db; /* Not using CSS variable */
     color: white;
     padding: 12px 24px;
     border: none;
@@ -87,10 +88,11 @@ button {
 }
 
 button:hover {
-    background-color: var(--secondary-color);
+    background-color: #2980b9;
 }
 
 .btn {
+    /* Inconsistent with button styling */
     background-color: var(--secondary-color);
     color: white;
     padding: 10px 20px;
@@ -100,25 +102,26 @@ button:hover {
     font-weight: 500;
 }
 
+
 .register-btn {
-    background-color: var(--primary-color);
+    background-color: var(--primary-color); /* Use primary color for consistency */
     color: white;
-    padding: 12px 24px;
+    padding: 12px 24px; /* Increase padding for better appearance */
     border-radius: 4px;
     display: inline-block;
     text-decoration: none;
-    font-weight: 600;
-    transition: background-color 0.3s, transform 0.3s;
+    font-weight: 600; /* Increase font weight for better readability */
+    transition: background-color 0.3s, transform 0.3s; /* Add transition for hover effect */
 }
 
 .register-btn:hover {
-    background-color: var(--secondary-color);
-    transform: translateY(-3px);
+    background-color: var(--secondary-color); /* Change background color on hover */
+    transform: translateY(-3px); /* Add slight lift effect on hover */
 }
 
-/* Hero section styling */
+/* Hero section styling - attractive but with layout issues */
 .hero-section {
-    min-height: 500px;
+    height: 500px; /* Fixed height instead of min-height */
     background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url("../images/hero.jpg");
     background-size: cover;
     background-position: center;
@@ -131,7 +134,7 @@ button:hover {
     padding: 2rem;
 }
 
-.hero-section h1 {
+.hero-section h3 { /* Should be h1 */
     font-size: 3rem;
     margin-bottom: 1rem;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
@@ -143,7 +146,7 @@ button:hover {
     margin-bottom: 2rem;
 }
 
-/* Sections styling */
+/* Sections styling - good spacing but missing some properties */
 section {
     padding: 4rem 2rem;
 }
@@ -159,11 +162,12 @@ section {
     color: var(--dark-gray);
 }
 
-/* Card components */
+/* Card components with better styling but layout issues */
 .event-cards {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    /* No proper gap */
+    /* No responsive adjustments */
 }
 
 .card {
@@ -172,8 +176,8 @@ section {
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     background-color: white;
     transition: transform 0.3s, box-shadow 0.3s;
-    flex: 1 1 calc(33.333% - 30px);
-    margin: 15px;
+    width: 330px; /* Fixed width instead of responsive */
+    margin: 0 15px 30px; /* Inconsistent spacing units */
 }
 
 .card:hover {
@@ -190,6 +194,7 @@ section {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    /* No transition effect */
 }
 
 .event-info {
@@ -226,6 +231,8 @@ section {
     width: 80%;
     margin: 0 auto;
     border-collapse: collapse;
+    /* Missing proper table styling */
+    /* No responsive behavior */
 }
 
 .team-preview td {
@@ -233,10 +240,151 @@ section {
     border-bottom: 1px solid #eee;
 }
 
-/* Footer styling */
-.site-footer {
-    background-color: var(--footer-bg);
+/* Footer styling - better looking but missing elements */
+footer {
+    background-color: #2c3e50;
     color: white;
+    padding: 3rem 2rem;
+    /* No proper layout for columns */
+}
+
+/* Timeline styling */
+.timeline {
+    margin: 2rem 0;
+    position: relative;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%; /* This won't work well for mobile */
+    width: 2px;
+    height: 100%;
+    background-color: var(--primary-color);
+}
+
+/* Missing proper media queries */
+@media (max-width: 768px) {
+    /* Empty media query */
+}
+
+/* Form styling but with accessibility issues */
+form input, 
+form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    /* No focus states */
+}
+
+form button {
+    width: 100%;
+}
+
+/* Dark mode - incomplete */
+.dark-mode {
+    background-color: #222;
+    color: #eee;
+    /* Missing comprehensive styling for all components */
+}
+.social-links a {
+    font-size: 24px; 
+    color: #555; 
+    margin-right: 15px;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: #007bff; /* Change color on hover */
+}
+
+/* Focus states for interactive elements */
+a:focus,
+button:focus,
+input:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.2);
+}
+
+/* Specific focus states for navigation */
+nav a:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 4px;
+    text-decoration: underline;
+}
+
+/* Focus state for social media links */
+.social-links a:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 4px;
+    transform: translateY(-2px);
+}
+
+/* Focus state for register buttons */
+.register-btn:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.2);
+    text-decoration: underline;
+}
+
+/* Focus state for form elements */
+.newsletter input:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 0;
+    border-color: var(--primary-color);
+}
+
+/* Focus state for hamburger menu */
+.hamburger:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Focus state for dark mode toggle */
+#dark-mode-toggle:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.2);
+}
+
+/* Remove focus outline for mouse users, but keep it for keyboard navigation */
+:focus:not(:focus-visible) {
+    outline: none;
+    box-shadow: none;
+}
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px;
+    z-index: 100;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+.site-footer {
+    background-color: var(--footer-bg, #f8f9fa);
     padding: 4rem 2rem 2rem;
     margin-top: 4rem;
 }
@@ -254,7 +402,7 @@ section {
 }
 
 .footer-col h3 {
-    color: var(--heading-color);
+    color: var(--heading-color, #2c3e50);
     font-size: 1.25rem;
     margin-bottom: 1rem;
     position: relative;
@@ -274,10 +422,6 @@ section {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
 }
 
 .footer-col.links li {
@@ -285,7 +429,7 @@ section {
 }
 
 .footer-col.links a {
-    color: var(--text-color);
+    color: var(--text-color, #4a5568);
     text-decoration: none;
     transition: color 0.3s ease;
 }
@@ -324,16 +468,15 @@ section {
 .footer-bottom {
     margin-top: 3rem;
     padding-top: 2rem;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color, #e2e8f0);
     text-align: center;
 }
 
 .copyright {
-    color: var(--text-muted);
+    color: var(--text-muted, #718096);
     font-size: 0.875rem;
 }
 
-/* Media queries */
 @media (max-width: 768px) {
     .site-footer {
         padding: 3rem 1rem 1.5rem;
@@ -357,100 +500,4 @@ section {
     .social-links {
         justify-content: center;
     }
-}
-
-/* Form styling */
-form input, 
-form textarea {
-    width: 100%;
-    padding: 0.8rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-form button {
-    width: 100%;
-}
-
-/* Dark mode */
-.dark-mode {
-    background-color: #222;
-    color: #eee;
-}
-
-/* Focus states */
-a:focus,
-button:focus,
-input:focus {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
-    box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.2);
-}
-
-nav a:focus {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 4px;
-    text-decoration: underline;
-}
-
-.social-links a:focus {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 4px;
-    transform: translateY(-2px);
-}
-
-.register-btn:focus {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
-    box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.2);
-    text-decoration: underline;
-}
-
-.newsletter input:focus {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 0;
-    border-color: var(--primary-color);
-}
-
-.hamburger:focus {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
-}
-
-#dark-mode-toggle:focus {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
-    box-shadow: 0 0 0 4px rgba(52, 152, 219, 0.2);
-}
-
-:focus:not(:focus-visible) {
-    outline: none;
-    box-shadow: none;
-}
-
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-}
-
-.skip-link {
-    position: absolute;
-    top: -40px;
-    left: 0;
-    background: var(--primary-color);
-    color: white;
-    padding: 8px;
-    z-index: 100;
-}
-
-.skip-link:focus {
-    top: 0;
 }
