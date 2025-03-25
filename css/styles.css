@@ -10,7 +10,7 @@
 
 /* Base styles with improved typography but still with issues */
 body {
-    font-family: 'Poppins', Arial;
+    font-family: 'Poppins', Arial, sans-serif;
     /* Missing fallback sans-serif */
     color: var(--text-color);
     margin: 0;
