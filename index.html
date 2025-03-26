@@ -4,203 +4,596 @@
     <title>Tech Club - Home</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* Hamburger Menu Styles */
-        .hamburger-menu {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --text-color: #1f2937;
+            --light-bg: #f3f4f6;
+            --white: #ffffff;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --transition: all 0.3s ease;
+            --container-width: 1200px;
+            --section-padding: 4rem 2rem;
+        }
+
+        /* Dark Mode Variables */
+        [data-theme="dark"] {
+            --primary-color: #3b82f6;
+            --secondary-color: #60a5fa;
+            --text-color: #f3f4f6;
+            --light-bg: #1f2937;
+            --white: #111827;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
             padding: 0;
-            z-index: 100;
-            position: absolute;
-            right: 20px;
-            top: 20px;
+            box-sizing: border-box;
         }
 
-        .bar {
-            display: block;
-            width: 25px;
-            height: 3px;
-            margin: 5px auto;
-            background-color: #333;
-            transition: all 0.3s ease-in-out;
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-top: 70px; /* Account for fixed header */
+            background-color: var(--white);
+            transition: var(--transition);
         }
 
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header Styles */
+        header {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            transition: var(--transition);
+        }
+
+        #nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        #nav ul {
+            display: flex;
+            gap: 1rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        #nav ul li a {
+            color: var(--text-color);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        #nav ul li a:hover {
+            background: var(--light-bg);
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: var(--section-padding);
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-section h3 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-section button {
+            background: var(--white);
+            color: var(--primary-color);
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 1rem;
+        }
+
+        .hero-section button:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Featured Events */
+        .featured-events {
+            padding: var(--section-padding);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        .event-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .event-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .event-info {
+            padding: 1.5rem;
+        }
+
+        .register-btn {
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        .register-btn:hover {
+            background: var(--secondary-color);
+        }
+
+        /* Achievements Section */
+        .achievements {
+            background: var(--light-bg);
+            padding: var(--section-padding);
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: var(--container-width);
+            margin: 0 auto;
+        }
+
+        .achievement-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .achievement-card h3 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Newsletter Section */
+        .newsletter {
+            background: var(--white);
+            padding: var(--section-padding);
+            text-align: center;
+        }
+
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter form {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .newsletter input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+            background: var(--white);
+            color: var(--text-color);
+            border-color: var(--light-bg);
+        }
+
+        .newsletter button {
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter button:hover {
+            background: var(--secondary-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-color);
+            color: var(--white);
+            padding: var(--section-padding);
+        }
+
+        .footer-content {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-col {
+            margin-bottom: 2rem;
+        }
+
+        .footer-col h3 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 1.25rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-col a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-col a:hover {
+            color: var(--white);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            margin-top: 3rem;
+        }
+
+        /* Responsive Design */
         @media screen and (max-width: 768px) {
-            .hamburger-menu {
-                display: block;
-            }
-
-            .hamburger-menu.active .bar:nth-child(2) {
-                opacity: 0;
-            }
-
-            .hamburger-menu.active .bar:nth-child(1) {
-                transform: translateY(8px) rotate(45deg);
-            }
-
-            .hamburger-menu.active .bar:nth-child(3) {
-                transform: translateY(-8px) rotate(-45deg);
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
             }
 
             #nav ul {
-                position: fixed;
-                left: -100%;
-                top: 0;
                 flex-direction: column;
-                background-color: white;
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-                padding: 60px 0;
+                align-items: center;
+                gap: 0.5rem;
             }
 
-            #nav ul.active {
-                left: 0;
+            .newsletter form {
+                flex-direction: column;
             }
+
+            .hero-section {
+                padding: 6rem 1rem 3rem;
+            }
+
+            .hero-section h3 {
+                font-size: 2rem;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+        }
+
+        /* Dark mode toggle button styles */
+        #dark-mode-toggle {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        #dark-mode-toggle i {
+            font-size: 1.1rem;
+        }
+
+        #dark-mode-toggle:hover {
+            background: var(--secondary-color);
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="logo">
-            <img src="images/logo.png" alt="logo">
-        </div>
-        
-        <nav id="nav">
-            <button class="hamburger-menu" aria-label="Toggle navigation menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+        <div class="header-content">
+            <div class="logo">
+                <img src="images/logo.png" alt="logo">
+            </div>
+            
+            <nav id="nav">
+                <button class="hamburger-menu" aria-label="Toggle navigation menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="about">About</a></li>
+                    <li><a href="/events.html">Events</a></li>
+                    <li><a href="/gallery.html">Gallery</a></li>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="contactus.html">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <button id="dark-mode-toggle">
+                <i class="fas fa-moon"></i>
+                <span>Dark Mode</span>
             </button>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="about">About</a></li>
-                <li><a href="/events.html">Events</a></li>
-                <li><a href="/gallery.html">Gallery</a></li>
-                <li><a href="team.html">Team</a></li>
-                <li><a href="contactus.html">Contact</a></li>
-            </ul>
-        </nav>
-        
-        <button id="dark-mode-toggle">Dark Mode</button>
+        </div>
     </header>
 
     <div class="hero-section">
-        <h3>Welcome to the Tech Club</h3>
-        <p>Where innovation meets community</p>
-        <button>Join Us</button>
+        <div class="hero-content">
+            <h3>Welcome to the Tech Club</h3>
+            <p>Where innovation meets community</p>
+            <button>Join Us</button>
+        </div>
     </div>
 
     <div class="featured-events">
-        <h2>Upcoming Events</h2>
-        
-        <div id="countdown">Loading...</div>
-        
-        <div class="event-cards">
-            <div class="card">
-                <div id="event1" class="event-image">
-                    <img src="images/event1.jpg">
+        <div class="container">
+            <div class="section-title">
+                <h2>Upcoming Events</h2>
+            </div>
+            
+            <div id="countdown">Loading...</div>
+            
+            <div class="event-cards">
+                <div class="card">
+                    <div id="event1" class="event-image">
+                        <img src="images/event1.jpg">
+                    </div>
+                    <div id="event1" class="event-info">
+                        <h3>Hackathon 2025</h3>
+                        <p class="date">April 15, 2025</p>
+                        <p>Join us for a 24-hour coding marathon!</p>
+                        <button class="register-btn">Register Now</button>
+                    </div>
                 </div>
-                <div id="event1" class="event-info">
-                    <h3>Hackathon 2025</h3>
-                    <p class="date">April 15, 2025</p>
-                    <p>Join us for a 24-hour coding marathon!</p>
-                    <button class="register-btn">Register Now</button>
+                
+                <div class="card">
+                    <div class="event-image">
+                        <img src="images/event2.jpg">
+                    </div>
+                    <div class="event-info">
+                        <h3>Workshop Series</h3>
+                        <p class="date">Every Saturday</p>
+                        <p>Learn new technologies with our experts</p>
+                        <button class="register-btn">Register Now</button>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="event-info">
+                        <h3>Tech Talk</h3>
+                        <p class="date">April 30, 2025</p>
+                        <p>AI Ethics and the Future of Work</p>
+                        <button class="register-btn">Register Now</button>
+                    </div>
                 </div>
             </div>
             
-            <div class="card">
-                <div class="event-image">
-                    <img src="images/event2.jpg">
-                </div>
-                <div class="event-info">
-                    <h3>Workshop Series</h3>
-                    <p class="date">Every Saturday</p>
-                    <p>Learn new technologies with our experts</p>
-                    <button class="register-btn">Register Now</button>
-                </div>
+            <div class="view-all">
+                <a href="events.html" class="btn">View All Events</a>
             </div>
-            
-            <div class="card">
-                <div class="event-info">
-                    <h3>Tech Talk</h3>
-                    <p class="date">April 30, 2025</p>
-                    <p>AI Ethics and the Future of Work</p>
-                    <button class="register-btn">Register Now</button>
-                </div>
-            </div>
-        </div>
-        
-        <div class="view-all">
-            <a href="events.html" class="btn">View All Events</a>
         </div>
     </div>
     
     <div class="achievements">
-        <h2>Our Impact</h2>
-        <div class="grid-3">
-            <div class="achievement-card">
-                <h3>500+</h3>
-                <p>Active Members</p>
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Impact</h2>
             </div>
-            <div class="achievement-card">
-                <h3>20+</h3>
-                <p>Events Per Year</p>
-            </div>
-            <div class="achievement-card">
-                <h3>50+</h3>
-                <p>Open Source Contributions</p>
+            <div class="grid-3">
+                <div class="achievement-card">
+                    <h3>500+</h3>
+                    <p>Active Members</p>
+                </div>
+                <div class="achievement-card">
+                    <h3>20+</h3>
+                    <p>Events Per Year</p>
+                </div>
+                <div class="achievement-card">
+                    <h3>50+</h3>
+                    <p>Open Source Contributions</p>
+                </div>
             </div>
         </div>
     </div>
 
     <div class="newsletter">
-        <h2>Stay Updated</h2>
-        <p>Subscribe to our newsletter for the latest events and tech news.</p>
-        <form>
-            <input type="email" placeholder="Your Email Address">
-            <button type="submit">Subscribe</button>
-        </form>
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Stay Updated</h2>
+                <p>Subscribe to our newsletter for the latest events and tech news.</p>
+                <form>
+                    <input type="email" placeholder="Your Email Address">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
     </div>
 
     <footer>
-        <div class="footer-col">
-            <h3>Tech Club</h3>
-            <p>Fostering innovation and community among tech enthusiasts.</p>
-        </div>
-        <div class="footer-col">
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="events.html">Events</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-        <div class="footer-col">
-            <h3>Contact Us</h3>
-            <p>Email: info@techclub.edu</p>
-            <p>Location: Tech Building, Room 101</p>
-        </div>
-        <div class="footer-col">
-            <h3>Follow Us</h3>
-            <div class="social-links">
-                <a href="#">FB</a>
-                <a href="#">TW</a>
-                <a href="#">IG</a>
-                <a href="#">LI</a>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>Tech Club</h3>
+                    <p>Fostering innovation and community among tech enthusiasts.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <p>Email: info@techclub.edu</p>
+                    <p>Location: Tech Building, Room 101</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#" aria-label="Follow us on Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Follow us on Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Follow us on Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Follow us on LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="copyright">
-            <p>© Tech Club 2025. All rights reserved.</p>
+            <div class="copyright">
+                <p>© Tech Club 2025. All rights reserved.</p>
+            </div>
         </div>
     </footer>
     
     <script src="js/main.js"></script>
     <script>
+        // Dark Mode Functionality
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const icon = darkModeToggle.querySelector('i');
+        const text = darkModeToggle.querySelector('span');
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            updateToggleButton(savedTheme === 'dark');
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateToggleButton(newTheme === 'dark');
+        });
+
+        function updateToggleButton(isDark) {
+            if (isDark) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                text.textContent = 'Light Mode';
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                text.textContent = 'Dark Mode';
+            }
+        }
+
         // Hamburger Menu Functionality
         const hamburger = document.querySelector('.hamburger-menu');
         const navLinks = document.querySelector('#nav ul');
