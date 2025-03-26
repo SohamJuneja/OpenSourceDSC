@@ -3,6 +3,17 @@
     --secondary-color: #2ecc71;
     --text-color: #333;
     --background-color: #f4f4f4;
+    --dark-primary-color: #2c3e50;
+    --dark-secondary-color: #27ae60;
+    --dark-text-color: #ecf0f1;
+    --dark-background-color: #34495e;
+}
+
+body.dark-theme {
+    --primary-color: var(--dark-primary-color);
+    --secondary-color: var(--dark-secondary-color);
+    --text-color: var(--dark-text-color);
+    --background-color: var(--dark-background-color);
 }
 
 * {
@@ -102,6 +113,22 @@ nav ul li a:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
+.project-card h3,
+.project-card p,
+.project-card .technologies span {
+    color: var(--text-color);
+}
+
+body.dark-theme .project-card {
+    background: var(--dark-background-color);
+}
+
+body.dark-theme .project-card h3,
+body.dark-theme .project-card p,
+body.dark-theme .project-card .technologies span {
+    color: var(--dark-text-color);
+}
+
 #contact-form {
     display: flex;
     flex-direction: column;
@@ -113,6 +140,10 @@ nav ul li a:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+body.dark-theme #contact-form {
+    background: var(--dark-background-color);
+}
+
 #contact-form input,
 #contact-form textarea {
     margin-bottom: 1rem;
@@ -122,10 +153,22 @@ nav ul li a:hover {
     transition: border-color 0.3s ease;
 }
 
+body.dark-theme #contact-form input,
+body.dark-theme #contact-form textarea {
+    border: 1px solid var(--dark-text-color);
+    background: var(--dark-background-color);
+    color: var(--dark-text-color);
+}
+
 #contact-form input:focus,
 #contact-form textarea:focus {
     border-color: var(--primary-color);
     outline: none;
+}
+
+body.dark-theme #contact-form input:focus,
+body.dark-theme #contact-form textarea:focus {
+    border-color: var(--dark-primary-color);
 }
 
 footer {
@@ -133,6 +176,10 @@ footer {
     color: white;
     text-align: center;
     padding: 1rem;
+}
+
+body.dark-theme footer {
+    background-color: var(--dark-primary-color);
 }
 
 .footer-content {
@@ -155,6 +202,21 @@ footer {
 
 .social-links a:hover {
     color: var(--secondary-color);
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.theme-toggle i {
+    font-size: 1.2rem;
 }
 
 @media screen and (max-width: 768px) {
