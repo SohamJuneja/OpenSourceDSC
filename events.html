@@ -1,68 +1,98 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events - Tech Club</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/layout.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <header>
-        <div class="logo">Tech Club</div>
-        <div id="nav">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="events.html">Events</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="team.html">Team</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
+<body class="bg-gray-900 text-white">
+    <header class="flex justify-between items-center p-5 bg-gray-800">
+        <div class="logo">
+            <img src="images/logo.png" class="h-10">
         </div>
+        
+        <nav>
+            <ul class="flex space-x-6">
+                <li><a href="index.html" class="hover:text-yellow-400">Home</a></li>
+                <li><a href="about.html" class="hover:text-yellow-400">About</a></li>
+                <li><a href="events.html" class="hover:text-yellow-400">Events</a></li>
+                <li><a href="gallery.html" class="hover:text-yellow-400">Gallery</a></li>
+                <li><a href="team.html" class="hover:text-yellow-400">Team</a></li>
+                <li><a href="contact.html" class="hover:text-yellow-400">Contact</a></li>
+            </ul>
+        </nav>
+        <button id="dark-mode-toggle" class="bg-yellow-500 px-4 py-2 rounded">Dark Mode</button>
     </header>
 
-    <h1>Upcoming Events</h1>
+    <div class="text-center py-12 bg-gray-700">
+        <h1 class="text-4xl font-bold">Upcoming Events</h1>
+        <p class="mt-3">Join us for exciting tech events and workshops</p>
+    </div>
     
-    <div class="events-container">
-        <div class="event-card">
-            <img src="images/event1.jpg">
-            <h3>Open Source Workshop</h3>
-            <p class="date">April 5, 2025</p>
-            <p class="location">Room 101, Tech Building</p>
-            <p>Learn how to contribute to open source projects</p>
-            <div class="register" onclick="register(1)">Register</div>
+    <div class="container mx-auto py-12 px-5 grid md:grid-cols-3 gap-6">
+        <div class="bg-gray-800 p-4 shadow rounded-lg">
+            <img src="images/event1.jpg" class="w-full h-40 object-cover rounded">
+            <h3 class="text-xl font-bold mt-2 text-yellow-400">Open Source Workshop</h3>
+            <p class="text-gray-400">April 5, 2025</p>
+            <p class="text-gray-500">Room 101, Tech Building</p>
+            <p class="mt-2">Learn how to contribute to open source projects</p>
+            <button class="mt-3 bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-600">Register</button>
         </div>
-        
-        <div class="event-card">
-            <img src="images/event2.jpg">
-            <h3>Web Development Bootcamp</h3>
-            <p class="date">April 12, 2025</p>
-            <p class="location">Online</p>
-            <p>A beginner-friendly introduction to HTML, CSS and JavaScript</p>
-            <div class="register" onclick="register(2)">Register</div>
+
+        <div class="bg-gray-800 p-4 shadow rounded-lg">
+            <img src="images/event2.jpg" class="w-full h-40 object-cover rounded">
+            <h3 class="text-xl font-bold mt-2 text-yellow-400">Web Development Bootcamp</h3>
+            <p class="text-gray-400">April 12, 2025</p>
+            <p class="text-gray-500">Online</p>
+            <p class="mt-2">A beginner-friendly introduction to HTML, CSS and JavaScript</p>
+            <button class="mt-3 bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-600">Register</button>
         </div>
-        
-        <div class="event-card">
-            <h3>AI Ethics Panel</h3>
-            <p class="date">April 20, 2025</p>
-            <p class="location">Auditorium</p>
-            <p>Join our discussion on the ethical implications of AI</p>
-            <div class="register" onclick="register(3)">Register</div>
+
+        <div class="bg-gray-800 p-4 shadow rounded-lg">
+            <h3 class="text-xl font-bold mt-2 text-yellow-400">AI Ethics Panel</h3>
+            <p class="text-gray-400">April 20, 2025</p>
+            <p class="text-gray-500">Auditorium</p>
+            <p class="mt-2">Join our discussion on the ethical implications of AI</p>
+            <button class="mt-3 bg-yellow-500 text-black px-4 py-2 rounded hover:bg-yellow-600">Register</button>
         </div>
     </div>
     
-    <div class="propose-event">
-        <h2>Propose an Event</h2>
-        <form>
-            <input type="text" placeholder="Event Title">
-            <input type="text" placeholder="Date">
-            <input type="text" placeholder="Location">
-            <textarea placeholder="Description"></textarea>
-            <button type="submit">Submit</button>
+    <div class="container mx-auto p-6 bg-gray-800 shadow rounded-lg mt-6">
+        <h2 class="text-2xl font-bold text-yellow-400">Propose an Event</h2>
+        <form class="mt-4 space-y-3">
+            <input type="text" placeholder="Event Title" class="w-full p-3 rounded bg-gray-700 text-white">
+            <input type="text" placeholder="Date" class="w-full p-3 rounded bg-gray-700 text-white">
+            <input type="text" placeholder="Location" class="w-full p-3 rounded bg-gray-700 text-white">
+            <textarea placeholder="Description" class="w-full p-3 rounded bg-gray-700 text-white"></textarea>
+            <button type="submit" class="bg-green-500 text-black px-5 py-3 rounded hover:bg-green-600">Submit</button>
         </form>
     </div>
 
-    <footer>
-        <p>© Tech Club 2025</p>
+    <footer class="bg-gray-800 text-white py-10 px-5 mt-12">
+        <div class="grid md:grid-cols-3 gap-6 text-center md:text-left">
+            <div>
+                <h3 class="text-xl font-bold">Tech Club</h3>
+                <p>Fostering innovation and community among tech enthusiasts.</p>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold">Quick Links</h3>
+                <ul>
+                    <li><a href="index.html" class="hover:text-yellow-400">Home</a></li>
+                    <li><a href="about.html" class="hover:text-yellow-400">About</a></li>
+                    <li><a href="events.html" class="hover:text-yellow-400">Events</a></li>
+                    <li><a href="contact.html" class="hover:text-yellow-400">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold">Contact Us</h3>
+                <p>Email: info@techclub.edu</p>
+                <p>Location: Tech Building, Room 101</p>
+            </div>
+        </div>
+        <div class="text-center mt-6">
+            <p>© Tech Club 2025. All rights reserved.</p>
+        </div>
     </footer>
     
     <script src="js/main.js"></script>
