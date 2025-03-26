@@ -8,7 +8,7 @@ account = bank.get_account(account_id)
 
 password = "securepassword"
 otp = account.generate_otp()  
-user_otp_input = int(input("Enter the OTP sent to your email/SMS: "))  # Simulate user input
+user_otp_input = int(input("Enter the OTP sent to your email/SMS: "))
 
 if account.authenticate_with_otp(otp, user_otp_input):
     if account.withdraw(5500, password):

@@ -106,6 +106,9 @@ class Bank:
                     to_account.deposit(amount, password)
                     print("Transfer successful!")
                     return True
+        except Exception as e:
+            print(f"An error occurred: {str(e)}")
+            return False
 
 class BankingSystem:
     def __init__(self):
