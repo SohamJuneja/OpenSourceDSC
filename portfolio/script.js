@@ -14,7 +14,7 @@ const projects = [
 function renderProjects() {
     const projectContainer = document.querySelector('.project-container');
     
-    projects.forEach((project, index) => {
+
         const projectCard = document.createElement('article');
         projectCard.classList.add('project-card');
         projectCard.setAttribute('role', 'listitem');
