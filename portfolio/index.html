@@ -1,47 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Developer Portfolio</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <script src="script.js" defer></script>
 </head>
+
 <body>
+    <!-- Header Section -->
     <header>
         <nav>
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home" aria-label="Home">Home</a></li>
+                <li><a href="#projects" aria-label="Projects">Projects</a></li>
+                <li><a href="#contact" aria-label="Contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- Main Content -->
     <main>
+        <!-- Home Section -->
         <section id="home">
-            <h1>Developer Name</h1>
-            <p>Web Developer | Designer | Problem Solver</p>
-        </section>
-
-        <section id="projects">
-            <h2>My Projects</h2>
-            <div class="project-container">
+            <div class="hero-content">
+                <h1>Developer Name</h1>
+                <p>Web Developer | Designer | Problem Solver</p>
             </div>
         </section>
 
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>My Projects</h2>
+            <div class="project-container">
+                <!-- Project details go here -->
+            </div>
+        </section>
+
+        <!-- Contact Section -->
         <section id="contact">
             <h2>Contact Me</h2>
             <form id="contact-form">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="message" placeholder="Your Message" required></textarea>
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+
                 <button type="submit">Send Message</button>
             </form>
         </section>
     </main>
 
+    <!-- Footer Section -->
     <footer>
-        <p>&copy; 2024 Developer Name. All Rights Reserved.</p>
+        <div class="footer-content">
+            <p>&copy; 2024 Developer Name. All Rights Reserved.</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.twitter.com" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
     </footer>
 </body>
+
 </html>
