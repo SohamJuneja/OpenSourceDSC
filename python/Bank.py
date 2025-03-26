@@ -6,7 +6,9 @@ import bcrypt
 
 
 class BankAccount:
-    def __init__(self, account_holder, initial_balance=0, password="default"):
+    def __init__(self, account_holder, initial_balance=0, password):
+        if len(password) < 8:
+            raise ValueError("Password must be at least 8 characters long.")
         self.account_id = str(uuid.uuid4())
         self.account_holder = account_holder
         self._balance = initial_balance
@@ -72,9 +74,11 @@ class Bank:
         self.accounts = {}  
         self._account_lock = threading.Lock() 
 
-    def create_account(self, account_holder, initial_balance=0):
+    def create_account(self, account_holder, initial_balance=0,password):
+        if not password or len(password)<8:
+            raise ValueError("Password must be at least 8 characters long.")
         with self._account_lock:
-            account = BankAccount(account_holder, initial_balance)
+            account = BankAccount(account_holder, initial_balance,password)
             self.accounts[account.account_id] = account
             return account.account_id
 
