@@ -71,22 +71,74 @@ public:
     }
 };
 
-// Main function demonstrating complex interactions
+class Triangle : public Shape {
+private:
+    double base;
+    double height;
+    
+public:
+    Triangle(double b, double h) : base(b), height(h) {
+        if (b <= 0 || h <= 0) {
+            throw std::invalid_argument("Base and height must be positive");
+        }
+    }
+    
+    double get_area() const override {
+        return 0.5 * base * height;
+    }
+};
+
+class Ellipse : public Shape {
+private:
+    double major_axis;
+    double minor_axis;
+    
+public:
+    Ellipse(double a, double b) : major_axis(a), minor_axis(b) {
+        if (a <= 0 || b <= 0) {
+            throw std::invalid_argument("Axes must be positive");
+        }
+    }
+    
+    double get_area() const override {
+        return 3.14159 * major_axis * minor_axis;
+    }
+};
+
 int main() {
     // Template container with type restrictions
     SmartContainer<int> int_container;
     int_container.insert(10);
     int_container.insert(20);
-    
+
+    // Print stored values
+    std::cout << "Stored numbers: ";
+    for (size_t i = 0; i < 2; ++i) {
+        auto value = int_container.get(i);
+        if (value) {
+            std::cout << *value << " ";
+        }
+    }
+    std::cout << std::endl;
+
     // Polymorphic shape management
     std::vector<std::unique_ptr<Shape>> shapes;
-    
+
     try {
         shapes.push_back(std::make_unique<Circle>(5.0));
         shapes.push_back(std::make_unique<Rectangle>(4.0, 6.0));
+        shapes.push_back(std::make_unique<Triangle>(3.0, 5.0));
+        shapes.push_back(std::make_unique<Ellipse>(4.0, 2.0));
+
+        // Print shape areas
+        std::cout << "Shape areas:\n";
+        for (const auto& shape : shapes) {
+            std::cout << shape->get_area() << std::endl;
+        }
     } catch (const std::invalid_argument& e) {
         std::cerr << "Invalid shape: " << e.what() << std::endl;
     }
-    
+
     return 0;
 }
+
