@@ -273,3 +273,42 @@ form button {
     color: #eee;
     /* Missing comprehensive styling for all components */
 }
+
+/* Hamburger menu styles */
+.hamburger-menu {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+/* Responsive navigation */
+@media (max-width: 768px) {
+    .hamburger-menu {
+        display: block;
+    }
+
+    #nav ul {
+        display: none;
+        flex-direction: column;
+        background-color: #2a75bb;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        padding: 1rem;
+    }
+
+    #nav ul.active {
+        display: flex;
+    }
+
+    #nav ul li {
+        margin: 1rem 0;
+    }
+
+    #nav ul li a {
+        color: white;
+    }
+}
