@@ -1,89 +1,92 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery - Tech Club</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/layout.css">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <header>
+<body class="bg-gray-900 text-white">
+    <header class="flex justify-between items-center p-5 bg-gray-800">
         <div class="logo">
-            <img src="images/logo.png">
+            <img src="images/logo.png" class="h-10">
         </div>
         
-        <nav id="nav">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="events.html">Events</a></li>
-                <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="team.html">Team</a></li>
-                <li><a href="contact.html">Contact</a></li>
+        <nav>
+            <ul class="flex space-x-6">
+                <li><a href="index.html" class="hover:text-yellow-400">Home</a></li>
+                <li><a href="about.html" class="hover:text-yellow-400">About</a></li>
+                <li><a href="events.html" class="hover:text-yellow-400">Events</a></li>
+                <li><a href="gallery.html" class="hover:text-yellow-400">Gallery</a></li>
+                <li><a href="team.html" class="hover:text-yellow-400">Team</a></li>
+                <li><a href="contact.html" class="hover:text-yellow-400">Contact</a></li>
             </ul>
         </nav>
         
-        <button id="dark-mode-toggle">Dark Mode</button>
+        <button id="dark-mode-toggle" class="bg-yellow-500 px-4 py-2 rounded">Dark Mode</button>
     </header>
 
-    <div class="gallery-header">
-        <h1>Our Event Gallery</h1>
-        <p>Memories from our past events and activities</p>
+    <div class="text-center py-12 bg-gray-700">
+        <h1 class="text-4xl font-bold">Our Event Gallery</h1>
+        <p class="mt-3">Memories from our past events and activities</p>
         
-        <div class="gallery-filters">
-            <span class="active" onclick="filterGallery('all')">All</span>
-            <span onclick="filterGallery('hackathon')">Hackathons</span>
-            <span onclick="filterGallery('workshop')">Workshops</span>
-            <span onclick="filterGallery('social')">Social Events</span>
+        <div class="mt-5 flex justify-center space-x-4">
+            <span class="cursor-pointer text-yellow-400 font-bold" onclick="filterGallery('all')">All</span>
+            <span class="cursor-pointer hover:text-yellow-400" onclick="filterGallery('hackathon')">Hackathons</span>
+            <span class="cursor-pointer hover:text-yellow-400" onclick="filterGallery('workshop')">Workshops</span>
+            <span class="cursor-pointer hover:text-yellow-400" onclick="filterGallery('social')">Social Events</span>
         </div>
     </div>
     
-    <div class="gallery-container">
-        <p class="empty-gallery">Loading gallery images...</p>
+    <div class="container mx-auto py-12 px-5">
+        <p class="text-center text-lg">Loading gallery images...</p>
     </div>
     
-    <div id="lightbox" class="lightbox">
-        <span class="close-lightbox">&times;</span>
-        <img class="lightbox-content" id="lightbox-img">
-        <div id="lightbox-caption"></div>
+    <div id="lightbox" class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center">
+        <span class="absolute top-5 right-5 text-white text-4xl cursor-pointer" onclick="closeLightbox()">&times;</span>
+        <img class="max-w-full max-h-screen" id="lightbox-img">
+        <div id="lightbox-caption" class="text-center text-white mt-2"></div>
     </div>
     
-    <div class="upload-section">
-        <h2>Share Your Photos</h2>
-        <p>Have photos from our events? Share them with the community!</p>
-        <form>
-            <input type="text" placeholder="Your Name">
-            <input type="email" placeholder="Your Email">
-            <select>
+    <div class="text-center py-12">
+        <h2 class="text-3xl font-bold">Share Your Photos</h2>
+        <p class="mt-3">Have photos from our events? Share them with the community!</p>
+        <form class="mt-6 max-w-md mx-auto space-y-4">
+            <input type="text" placeholder="Your Name" class="w-full p-3 rounded text-black">
+            <input type="email" placeholder="Your Email" class="w-full p-3 rounded text-black">
+            <select class="w-full p-3 rounded text-black">
                 <option value="">-- Select Event --</option>
                 <option value="hackathon">Hackathon 2024</option>
                 <option value="workshop">Python Workshop</option>
                 <option value="social">End of Year Party</option>
             </select>
-            <input type="file" accept="image/*">
-            <button type="submit">Upload</button>
+            <input type="file" accept="image/*" class="w-full p-3 rounded text-black">
+            <button type="submit" class="bg-yellow-500 px-5 py-3 rounded text-black font-bold">Upload</button>
         </form>
     </div>
 
-    <footer>
-        <div class="footer-col">
-            <h3>Tech Club</h3>
-            <p>Fostering innovation and community among tech enthusiasts.</p>
+    <footer class="bg-gray-800 text-white py-10 px-5">
+        <div class="grid md:grid-cols-3 gap-6 text-center md:text-left">
+            <div>
+                <h3 class="text-xl font-bold">Tech Club</h3>
+                <p>Fostering innovation and community among tech enthusiasts.</p>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold">Quick Links</h3>
+                <ul>
+                    <li><a href="index.html" class="hover:text-yellow-400">Home</a></li>
+                    <li><a href="about.html" class="hover:text-yellow-400">About</a></li>
+                    <li><a href="events.html" class="hover:text-yellow-400">Events</a></li>
+                    <li><a href="contact.html" class="hover:text-yellow-400">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold">Contact Us</h3>
+                <p>Email: info@techclub.edu</p>
+                <p>Location: Tech Building, Room 101</p>
+            </div>
         </div>
-        <div class="footer-col">
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="events.html">Events</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </div>
-        <div class="footer-col">
-            <h3>Contact Us</h3>
-            <p>Email: info@techclub.edu</p>
-            <p>Location: Tech Building, Room 101</p>
-        </div>
-        <div class="copyright">
+        <div class="text-center mt-6">
             <p>© Tech Club 2025. All rights reserved.</p>
         </div>
     </footer>
