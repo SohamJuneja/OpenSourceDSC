@@ -1,57 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tech Club - Home</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/layout.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <div class="logo">
-            <img src="images/logo.png">
+            <img src="images/logo.png" alt="logo-image">
         </div>
         
         <nav id="nav">
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="about">About</a></li>
-                <li><a href="/events.html">Events</a></li>
-                <li><a href="/gallery.html">Gallery</a></li>
-                <li><a href="team.html">Team</a></li>
-                <li><a href="contactus.html">Contact</a></li>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./about.html">About</a></li>
+                <li><a href="./events.html">Events</a></li>
+                <li><a href="./gallery.html">Gallery</a></li>
+                <li><a href="./team.html">Team</a></li>
+                <li><a href="./contactus.html">Contact</a></li>
             </ul>
         </nav>
         
         <button id="dark-mode-toggle">Dark Mode</button>
+        <!-- Hamburger menu button -->
+        <button class="hamburger-menu" onclick="toggleMenu()">☰</button>
     </header>
 
-    <div class="hero-section">
-        <h3>Welcome to the Tech Club</h3>
+    <section class="hero-section">
+        <h1>Welcome to the Tech Club</h1>
         <p>Where innovation meets community</p>
-        <button>Join Us</button>
-    </div>
+        <a href="#join" class="btn">Join Us</a>
+    </section>
 
-    <div class="featured-events">
+    <section class="featured-events">
         <h2>Upcoming Events</h2>
         
         <div id="countdown">Loading...</div>
         
         <div class="event-cards">
-            <div class="card">
-                <div id="event1" class="event-image">
-                    <img src="images/event1.jpg">
+            <article class="card">
+                <div class="event-image">
+                    <img src="images/event1.jpg" alt="Event 1">
                 </div>
-                <div id="event1" class="event-info">
+                <div class="event-info">
                     <h3>Hackathon 2025</h3>
                     <p class="date">April 15, 2025</p>
                     <p>Join us for a 24-hour coding marathon!</p>
                     <button class="register-btn">Register Now</button>
                 </div>
-            </div>
+            </article>
             
-            <div class="card">
+            <article class="card">
                 <div class="event-image">
-                    <img src="images/event2.jpg">
+                    <img src="images/event2.jpg" alt="Event 2">
                 </div>
                 <div class="event-info">
                     <h3>Workshop Series</h3>
@@ -59,24 +64,24 @@
                     <p>Learn new technologies with our experts</p>
                     <button class="register-btn">Register Now</button>
                 </div>
-            </div>
+            </article>
             
-            <div class="card">
+            <article class="card">
                 <div class="event-info">
                     <h3>Tech Talk</h3>
                     <p class="date">April 30, 2025</p>
                     <p>AI Ethics and the Future of Work</p>
                     <button class="register-btn">Register Now</button>
                 </div>
-            </div>
+            </article>
         </div>
         
         <div class="view-all">
             <a href="events.html" class="btn">View All Events</a>
         </div>
-    </div>
+    </section>
     
-    <div class="achievements">
+    <section class="achievements">
         <h2>Our Impact</h2>
         <div class="grid-3">
             <div class="achievement-card">
@@ -92,16 +97,16 @@
                 <p>Open Source Contributions</p>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="newsletter">
+    <section class="newsletter">
         <h2>Stay Updated</h2>
         <p>Subscribe to our newsletter for the latest events and tech news.</p>
         <form>
             <input type="email" placeholder="Your Email Address">
             <button type="submit">Subscribe</button>
         </form>
-    </div>
+    </section>
 
     <footer>
         <div class="footer-col">
@@ -137,5 +142,11 @@
     </footer>
     
     <script src="js/main.js"></script>
+    <script>
+        function toggleMenu() {
+            const nav = document.getElementById('nav');
+            nav.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
