@@ -239,11 +239,24 @@ function setupContactForm() {
     });
 }
 
+function toggleTheme() {
+    const body = document.body;
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeIcon = themeToggleBtn.querySelector('i');
+    body.classList.toggle('dark-theme');
+    if (body.classList.contains('dark-theme')) {
+        themeToggleBtn.innerHTML = '<i class="fas fa-sun"></i> Light Mode';
+    } else {
+        themeToggleBtn.innerHTML = '<i class="fas fa-moon"></i> Dark Mode';
+    }
+}
+
 function initPage() {
     renderProjects();
     setupProjectFilters();
     setupNewProjectForm();
     setupContactForm();
+    document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
 }
 
 // Initialize hamburger menu
