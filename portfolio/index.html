@@ -1,76 +1,120 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Developer Portfolio</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
-    <!-- Header Section -->
     <header>
         <nav>
-            <ul>
-                <li><a href="#home" aria-label="Home">Home</a></li>
-                <li><a href="#projects" aria-label="Projects">Projects</a></li>
-                <li><a href="#contact" aria-label="Contact">Contact</a></li>
+            <a href="#" class="logo">DevPortfolio</a>
+            <button class="hamburger-menu" aria-label="Toggle navigation menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Main Content -->
     <main>
-        <!-- Home Section -->
         <section id="home">
             <div class="hero-content">
-                <h1>Developer Name</h1>
-                <p>Web Developer | Designer | Problem Solver</p>
+                <h1>Arpit Developer</h1>
+                <p class="tagline">Web Developer | Designer | Problem Solver</p>
+                <p>I build elegant, responsive, and high-performance web applications that solve real-world problems.</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                </div>
             </div>
         </section>
 
-        <!-- Projects Section -->
         <section id="projects">
-            <h2>My Projects</h2>
-            <div class="project-container">
-                <!-- Project details go here -->
+            <div class="container">
+                <div class="section-header">
+                    <h2>My Projects</h2>
+                    <p>Here are some of my recent projects that showcase my skills and expertise.</p>
+                </div>
+                <div class="project-container">
+                    <!-- Projects will be rendered here by JavaScript -->
+                </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
         <section id="contact">
-            <h2>Contact Me</h2>
-            <form id="contact-form">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="Your Name" required>
-
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Your Email" required>
-
-                <label for="message">Message</label>
-                <textarea id="message" name="message" placeholder="Your Message" required></textarea>
-
-                <button type="submit">Send Message</button>
-            </form>
+            <div class="container">
+                <div class="section-header">
+                    <h2>Get In Touch</h2>
+                    <p>Have a project in mind or just want to say hello? Feel free to reach out!</p>
+                </div>
+                <div class="contact-grid">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit">Send Message</button>
+                    </form>
+                    <div class="contact-info">
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h3>Email</h3>
+                                <p>adoranto737@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h3>Phone</h3>
+                                <p>+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h3>Location</h3>
+                                <p>India</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
-    <!-- Footer Section -->
     <footer>
         <div class="footer-content">
-            <p>&copy; 2024 Developer Name. All Rights Reserved.</p>
             <div class="social-links">
-                <a href="https://www.facebook.com" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.twitter.com" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.instagram.com" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.linkedin.com" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-dribbble"></i></a>
             </div>
+            <p>&copy; 2025 John Developer. All Rights Reserved.</p>
         </div>
     </footer>
-</body>
 
+    <script src="script.js"></script>
+</body>
 </html>
