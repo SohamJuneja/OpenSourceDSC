@@ -180,3 +180,127 @@ function startCountdown() {
 
 // Try to start countdown without checking if element exists
 startCountdown();
+
+// Secure email validation function
+function validateEmail(email) {
+    // Remove any whitespace
+    email = email.trim();
+    
+    // Check length
+    if (email.length === 0 || email.length > 254) {
+        return false;
+    }
+    
+    // RFC 5322 compliant email regex
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+    
+    if (!emailRegex.test(email)) {
+        return false;
+    }
+    
+    // Additional security checks
+    if (email.includes('..') || email.startsWith('.') || email.endsWith('.')) {
+        return false;
+    }
+    
+    return true;
+}
+
+// Add rate limiting
+let lastSubmissionTime = 0;
+const SUBMISSION_COOLDOWN = 5000; // 5 seconds
+
+function handleNewsletterSubmit(event) {
+    event.preventDefault();
+    
+    // Check rate limiting
+    const currentTime = Date.now();
+    if (currentTime - lastSubmissionTime < SUBMISSION_COOLDOWN) {
+        const errorDiv = document.getElementById('emailError');
+        errorDiv.textContent = 'Please wait a few seconds before trying again';
+        errorDiv.classList.add('show');
+        return false;
+    }
+    
+    const emailInput = document.getElementById('newsletterEmail');
+    const errorDiv = document.getElementById('emailError');
+    
+    // Get and sanitize email
+    const email = emailInput.value.trim().toLowerCase();
+    
+    // Validate email
+    if (!validateEmail(email)) {
+        errorDiv.textContent = 'Please enter a valid email address';
+        errorDiv.classList.add('show');
+        return false;
+    }
+    
+    // Clear any previous error
+    errorDiv.textContent = '';
+    errorDiv.classList.remove('show');
+    
+    // Update last submission time
+    lastSubmissionTime = currentTime;
+    
+    // Show loading state
+    const submitButton = event.target.querySelector('button[type="submit"]');
+    const originalButtonText = submitButton.textContent;
+    submitButton.textContent = 'Subscribing...';
+    submitButton.disabled = true;
+    
+    // Here you would typically send the email to your server
+    fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            email: email
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            errorDiv.textContent = 'Thank you for subscribing!';
+            errorDiv.style.color = '#4CAF50';
+            errorDiv.classList.add('show');
+            emailInput.value = '';
+        } else {
+            throw new Error(data.message || 'Subscription failed');
+        }
+    })
+    .catch(error => {
+        errorDiv.textContent = 'Something went wrong. Please try again later.';
+        errorDiv.classList.add('show');
+        console.error('Newsletter subscription error:', error.message);
+    })
+    .finally(() => {
+        // Reset button state
+        submitButton.textContent = originalButtonText;
+        submitButton.disabled = false;
+    });
+    
+    return false;
+}
+
+// Add email format helper
+function showEmailFormatHelper() {
+    const emailInput = document.getElementById('newsletterEmail');
+    const errorDiv = document.getElementById('emailError');
+    
+    if (emailInput.value.length > 0 && !emailInput.value.includes('@')) {
+        errorDiv.textContent = 'Email should contain @ symbol';
+        errorDiv.classList.add('show');
+    } else {
+        errorDiv.textContent = '';
+        errorDiv.classList.remove('show');
+    }
+}
+
+// Add real-time validation
+document.addEventListener('DOMContentLoaded', function() {
+    const emailInput = document.getElementById('newsletterEmail');
+    if (emailInput) {
+        emailInput.addEventListener('input', showEmailFormatHelper);
+    }
+});

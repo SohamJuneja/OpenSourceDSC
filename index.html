@@ -97,10 +97,16 @@
     <div class="newsletter">
         <h2>Stay Updated</h2>
         <p>Subscribe to our newsletter for the latest events and tech news.</p>
-        <form>
-            <input type="email" placeholder="Your Email Address">
+        <form id="newsletterForm" onsubmit="return handleNewsletterSubmit(event)">
+            <input type="email" 
+                   id="newsletterEmail" 
+                   placeholder="Your Email Address" 
+                   required 
+                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                   maxlength="254">
             <button type="submit">Subscribe</button>
         </form>
+        <div id="emailError" class="error-message"></div>
     </div>
 
     <footer>
