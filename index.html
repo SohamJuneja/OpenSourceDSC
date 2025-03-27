@@ -633,10 +633,17 @@
     <div class="text-center py-12">
         <h2 class="text-3xl font-bold">Stay Updated</h2>
         <p class="mt-3">Subscribe to our newsletter for the latest events and tech news.</p>
-        <form class="mt-6 flex justify-center">
-            <input type="email" placeholder="Your Email Address" class="p-3 rounded-l text-black">
+        <form id="newsletterForm" onsubmit="return handleNewsletterSubmit(event)" class="mt-6 flex justify-center">
+            <input type="email" 
+                   id="newsletterEmail" 
+                   placeholder="Your Email Address" 
+                   required 
+                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                   maxlength="254"
+                   class="p-3 rounded-l text-black">
             <button type="submit" class="bg-yellow-500 px-5 py-3 rounded-r text-black font-bold">Subscribe</button>
         </form>
+        <div id="emailError" class="error-message mt-3 text-red-500"></div>
     </div>
 
     <footer class="bg-gray-800 text-white py-10 px-5">

@@ -180,3 +180,110 @@ function startCountdown() {
 
 // Try to start countdown without checking if element exists
 startCountdown();
+
+let lastSubmissionTime = 0;
+const SUBMISSION_COOLDOWN = 5000;
+
+function validateEmail(email) {
+    email = email.trim();
+    
+    if (email.length === 0 || email.length > 254) {
+        return false;
+    }
+    
+    const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+    
+    if (!emailRegex.test(email)) {
+        return false;
+    }
+    
+    if (email.includes('..') || email.startsWith('.') || email.endsWith('.')) {
+        return false;
+    }
+    
+    return true;
+}
+
+function handleNewsletterSubmit(event) {
+    event.preventDefault();
+    
+    const currentTime = Date.now();
+    if (currentTime - lastSubmissionTime < SUBMISSION_COOLDOWN) {
+        const errorDiv = document.getElementById('emailError');
+        errorDiv.textContent = 'Please wait a few seconds before trying again';
+        errorDiv.classList.add('show');
+        return false;
+    }
+    
+    const emailInput = document.getElementById('newsletterEmail');
+    const errorDiv = document.getElementById('emailError');
+    
+    const email = emailInput.value.trim().toLowerCase();
+    
+    if (!validateEmail(email)) {
+        errorDiv.textContent = 'Please enter a valid email address';
+        errorDiv.classList.add('show');
+        return false;
+    }
+    
+    errorDiv.textContent = '';
+    errorDiv.classList.remove('show');
+    
+    lastSubmissionTime = currentTime;
+    
+    const submitButton = event.target.querySelector('button[type="submit"]');
+    const originalButtonText = submitButton.textContent;
+    submitButton.textContent = 'Subscribing...';
+    submitButton.disabled = true;
+    
+    fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            email: email
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            errorDiv.textContent = 'Thank you for subscribing!';
+            errorDiv.style.color = '#4CAF50';
+            errorDiv.classList.add('show');
+            emailInput.value = '';
+        } else {
+            throw new Error(data.message || 'Subscription failed');
+        }
+    })
+    .catch(error => {
+        errorDiv.textContent = 'Something went wrong. Please try again later.';
+        errorDiv.classList.add('show');
+    })
+    .finally(() => {
+        submitButton.textContent = originalButtonText;
+        submitButton.disabled = false;
+    });
+    
+    return false;
+}
+
+function showEmailFormatHelper() {
+    const emailInput = document.getElementById('newsletterEmail');
+    const errorDiv = document.getElementById('emailError');
+    
+    if (emailInput.value.length > 0 && !emailInput.value.includes('@')) {
+        errorDiv.textContent = 'Email should contain @ symbol';
+        errorDiv.classList.add('show');
+    } else {
+        errorDiv.textContent = '';
+        errorDiv.classList.remove('show');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const emailInput = document.getElementById('newsletterEmail');
+    if (emailInput) {
+        emailInput.addEventListener('input', showEmailFormatHelper);
+    }
+});
