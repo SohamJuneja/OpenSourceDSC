@@ -181,24 +181,22 @@ function startCountdown() {
 // Try to start countdown without checking if element exists
 startCountdown();
 
-// Secure email validation function
+let lastSubmissionTime = 0;
+const SUBMISSION_COOLDOWN = 5000;
+
 function validateEmail(email) {
-    // Remove any whitespace
     email = email.trim();
     
-    // Check length
     if (email.length === 0 || email.length > 254) {
         return false;
     }
     
-    // RFC 5322 compliant email regex
     const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
     
     if (!emailRegex.test(email)) {
         return false;
     }
     
-    // Additional security checks
     if (email.includes('..') || email.startsWith('.') || email.endsWith('.')) {
         return false;
     }
@@ -206,14 +204,9 @@ function validateEmail(email) {
     return true;
 }
 
-// Add rate limiting
-let lastSubmissionTime = 0;
-const SUBMISSION_COOLDOWN = 5000; // 5 seconds
-
 function handleNewsletterSubmit(event) {
     event.preventDefault();
     
-    // Check rate limiting
     const currentTime = Date.now();
     if (currentTime - lastSubmissionTime < SUBMISSION_COOLDOWN) {
         const errorDiv = document.getElementById('emailError');
@@ -225,30 +218,24 @@ function handleNewsletterSubmit(event) {
     const emailInput = document.getElementById('newsletterEmail');
     const errorDiv = document.getElementById('emailError');
     
-    // Get and sanitize email
     const email = emailInput.value.trim().toLowerCase();
     
-    // Validate email
     if (!validateEmail(email)) {
         errorDiv.textContent = 'Please enter a valid email address';
         errorDiv.classList.add('show');
         return false;
     }
     
-    // Clear any previous error
     errorDiv.textContent = '';
     errorDiv.classList.remove('show');
     
-    // Update last submission time
     lastSubmissionTime = currentTime;
     
-    // Show loading state
     const submitButton = event.target.querySelector('button[type="submit"]');
     const originalButtonText = submitButton.textContent;
     submitButton.textContent = 'Subscribing...';
     submitButton.disabled = true;
     
-    // Here you would typically send the email to your server
     fetch('/api/newsletter/subscribe', {
         method: 'POST',
         headers: {
@@ -272,10 +259,8 @@ function handleNewsletterSubmit(event) {
     .catch(error => {
         errorDiv.textContent = 'Something went wrong. Please try again later.';
         errorDiv.classList.add('show');
-        console.error('Newsletter subscription error:', error.message);
     })
     .finally(() => {
-        // Reset button state
         submitButton.textContent = originalButtonText;
         submitButton.disabled = false;
     });
@@ -283,7 +268,6 @@ function handleNewsletterSubmit(event) {
     return false;
 }
 
-// Add email format helper
 function showEmailFormatHelper() {
     const emailInput = document.getElementById('newsletterEmail');
     const errorDiv = document.getElementById('emailError');
@@ -297,7 +281,6 @@ function showEmailFormatHelper() {
     }
 }
 
-// Add real-time validation
 document.addEventListener('DOMContentLoaded', function() {
     const emailInput = document.getElementById('newsletterEmail');
     if (emailInput) {
