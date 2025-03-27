@@ -1,122 +1,17 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Developer Portfolio</title>
-    <style>
-        :root {
-            --primary-color: #3498db;
-            --secondary-color: #2ecc71;
-            --text-color: #333;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-        }
-
-        nav ul {
-            display: flex;
-            justify-content: space-around;
-            list-style: none;
-            padding: 1rem;
-            background-color: var(--primary-color);
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: white;
-            transition: color 0.3s ease;
-        }
-
-        .project-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-        }
-
-        #contact-form {
-            display: flex;
-            flex-direction: column;
-            max-width: 400px;
-            margin: 0 auto;
-        }
-
-        #contact-form input,
-        #contact-form textarea {
-            margin-bottom: 1rem;
-            padding: 0.5rem;
-        }
-
-        /* Hamburger Menu Styles */
-        .hamburger-menu {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            z-index: 100;
-        }
-
-        .bar {
-            display: block;
-            width: 25px;
-            height: 3px;
-            margin: 5px auto;
-            background-color: #333;
-            transition: all 0.3s ease-in-out;
-        }
-
-        @media screen and (max-width: 768px) {
-            .hamburger-menu {
-                display: block;
-                position: absolute;
-                right: 20px;
-                top: 20px;
-            }
-
-            .hamburger-menu.active .bar:nth-child(2) {
-                opacity: 0;
-            }
-
-            .hamburger-menu.active .bar:nth-child(1) {
-                transform: translateY(8px) rotate(45deg);
-            }
-
-            .hamburger-menu.active .bar:nth-child(3) {
-                transform: translateY(-8px) rotate(-45deg);
-            }
-
-            .nav-links {
-                position: fixed;
-                left: -100%;
-                top: 0;
-                gap: 0;
-                flex-direction: column;
-                background-color: white;
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-                padding: 60px 0;
-            }
-
-            .nav-links.active {
-                left: 0;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <header>
         <nav>
+            <a href="#" class="logo">DevPortfolio</a>
             <button class="hamburger-menu" aria-label="Toggle navigation menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
@@ -132,106 +27,94 @@
 
     <main>
         <section id="home">
-            <h1>Developer Name</h1>
-            <p>Web Developer | Designer | Problem Solver</p>
+            <div class="hero-content">
+                <h1>Arpit Developer</h1>
+                <p class="tagline">Web Developer | Designer | Problem Solver</p>
+                <p>I build elegant, responsive, and high-performance web applications that solve real-world problems.</p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn btn-primary">View My Work</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                </div>
+            </div>
         </section>
 
         <section id="projects">
-            <h2>My Projects</h2>
-            <div class="project-container">
+            <div class="container">
+                <div class="section-header">
+                    <h2>My Projects</h2>
+                    <p>Here are some of my recent projects that showcase my skills and expertise.</p>
+                </div>
+                <div class="project-container">
+                    <!-- Projects will be rendered here by JavaScript -->
+                </div>
             </div>
         </section>
 
         <section id="contact">
-            <h2>Contact Me</h2>
-            <form id="contact-form">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="message" placeholder="Your Message" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
+            <div class="container">
+                <div class="section-header">
+                    <h2>Get In Touch</h2>
+                    <p>Have a project in mind or just want to say hello? Feel free to reach out!</p>
+                </div>
+                <div class="contact-grid">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit">Send Message</button>
+                    </form>
+                    <div class="contact-info">
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h3>Email</h3>
+                                <p>adoranto737@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h3>Phone</h3>
+                                <p>+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h3>Location</h3>
+                                <p>India</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2024 Developer Name. All Rights Reserved.</p>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="social-link"><i class="fab fa-dribbble"></i></a>
+            </div>
+            <p>&copy; 2025 John Developer. All Rights Reserved.</p>
+        </div>
     </footer>
 
-    <script>
-        const projects = [
-            {
-                title: "E-commerce Platform",
-                description: "Full-stack e-commerce solution",
-                technologies: ["React", "Node.js", "MongoDB"]
-            },
-            {
-                title: "Weather App",
-                description: "Real-time weather tracking application",
-                technologies: ["JavaScript", "API Integration"]
-            }
-        ];
-
-        function renderProjects() {
-            const projectContainer = document.querySelector('.project-container');
-            
-            projects.forEach(project => {
-                const projectCard = document.createElement('div');
-                projectCard.classList.add('project-card');
-                
-                projectCard.innerHTML = `
-                    <h3>${project.title}</h3>
-                    <p>${project.description}</p>
-                    <div class="technologies">
-                        ${project.technologies.map(tech => `<span>${tech}</span>`).join('')}
-                    </div>
-                `;
-                
-                projectContainer.appendChild(projectCard);
-            });
-        }
-
-        function setupContactForm() {
-            const form = document.getElementById('contact-form');
-            
-            form.addEventListener('submit', function(event) {
-                event.preventDefault();
-                
-                const name = form.name.value.trim();
-                const email = form.email.value.trim();
-                const message = form.message.value.trim();
-                
-                if (!name || !email || !message) {
-                    alert('Please fill in all fields');
-                    return;
-                }
-                
-                console.log('Form submitted', { name, email, message });
-            });
-        }
-
-        function initPage() {
-            renderProjects();
-            setupContactForm();
-        }
-
-        // Hamburger Menu Functionality
-        const hamburger = document.querySelector('.hamburger-menu');
-        const navLinks = document.querySelector('.nav-links');
-
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-
-        // Close menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                hamburger.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
-
-        document.addEventListener('DOMContentLoaded', initPage);
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
