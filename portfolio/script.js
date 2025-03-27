@@ -15,7 +15,7 @@ function renderProjects() {
     const projectContainer = document.querySelector('.project-container');
     
     projects.forEach(project => {
-        const projectCard = document.createElement('div');
+        const projectCard = document.createElement('article');
         projectCard.classList.add('project-card');
         
         projectCard.innerHTML = `
