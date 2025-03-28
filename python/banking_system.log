@@ -1,0 +1,58 @@
+2025-03-28 18:39:10,447 - BankingSystem - WARNING - No encryption key found in environment. Generated new key.
+2025-03-28 18:39:10,448 - BankingSystem - INFO - Banking system initialized for Secure Bank
+2025-03-28 18:39:10,455 - BankingSystem - INFO - New account created: 2126762e-8ee0-4dac-9f1c-9e2aa2bcf985
+2025-03-28 18:39:10,455 - BankingSystem - INFO - New account created: df5913fa-b326-4b3d-8591-8814557ae0ee
+2025-03-28 18:39:10,459 - BankingSystem - INFO - Transaction logged: WITHDRAWAL - Amount: 500
+2025-03-28 18:39:10,459 - BankingSystem - INFO - Transaction logged: DEPOSIT - Amount: 500
+2025-03-28 18:39:10,460 - BankingSystem - INFO - Transfer successful: 500 from 2126762e-8ee0-4dac-9f1c-9e2aa2bcf985 to df5913fa-b326-4b3d-8591-8814557ae0ee
+2025-03-28 18:39:10,463 - BankingSystem - WARNING - Transfer amount 6000 exceeds single transaction limit
+2025-03-28 18:41:29,675 - BankingSystem - WARNING - No encryption key found in environment. Generated new key.
+2025-03-28 18:41:29,676 - BankingSystem - INFO - Banking system initialized for Secure Bank
+2025-03-28 18:41:29,679 - BankingSystem - INFO - New account created: ba80a7b3-7d5a-4922-91c5-e245934cd497
+2025-03-28 18:41:29,679 - BankingSystem - INFO - New account created: 56b775c9-30a4-4172-ae76-407bf388b76d
+2025-03-28 18:41:29,679 - BankingSystem - INFO - Transaction logged: WITHDRAWAL - Amount: 500
+2025-03-28 18:41:29,679 - BankingSystem - INFO - Transaction logged: DEPOSIT - Amount: 500
+2025-03-28 18:41:29,679 - BankingSystem - INFO - Transfer successful: 500 from ba80a7b3-7d5a-4922-91c5-e245934cd497 to 56b775c9-30a4-4172-ae76-407bf388b76d
+2025-03-28 18:41:29,680 - BankingSystem - WARNING - Transfer amount 6000 exceeds single transaction limit
+2025-03-28 18:42:26,369 - BankingSystem - WARNING - No encryption key found in environment. Generated new key.
+2025-03-28 18:42:26,369 - BankingSystem - INFO - Banking system initialized for Secure Bank
+2025-03-28 18:42:26,372 - BankingSystem - INFO - New account created: 571842af-01ed-4116-aa76-f5123e98be39
+2025-03-28 18:42:26,372 - BankingSystem - INFO - New account created: fd1e08a8-0bfa-41b9-b359-3978ed900106
+2025-03-28 18:42:26,374 - BankingSystem - INFO - Transaction logged: WITHDRAWAL - Amount: 500
+2025-03-28 18:42:26,375 - BankingSystem - INFO - Transaction logged: DEPOSIT - Amount: 500
+2025-03-28 18:42:26,375 - BankingSystem - INFO - Transfer successful: 500 from 571842af-01ed-4116-aa76-f5123e98be39 to fd1e08a8-0bfa-41b9-b359-3978ed900106
+2025-03-28 18:42:26,376 - BankingSystem - WARNING - Transfer amount 6000 exceeds single transaction limit
+2025-03-28 18:48:26,574 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-28 18:48:26,575 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-28 18:48:26,594 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-03-28 18:48:27,116 - werkzeug - WARNING -  * Debugger is active!
+2025-03-28 18:48:27,120 - werkzeug - INFO -  * Debugger PIN: 957-973-289
+2025-03-28 18:51:08,380 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-28 18:51:08,381 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-28 18:51:08,395 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-03-28 18:51:08,859 - werkzeug - WARNING -  * Debugger is active!
+2025-03-28 18:51:08,862 - werkzeug - INFO -  * Debugger PIN: 957-973-289
+2025-03-28 18:52:02,729 - BankingSystem - WARNING - No encryption key found in environment. Generated new key.
+2025-03-28 18:52:02,729 - BankingSystem - INFO - Banking system initialized for Secure Bank
+2025-03-28 18:52:02,742 - BankingSystem - INFO - New account created: a3903f58-930d-46a0-a5f5-6fd377f77536
+2025-03-28 18:52:02,743 - BankingSystem - INFO - New account created: d341fc47-acd4-4cf6-8e75-3693261e4098
+2025-03-28 18:52:02,743 - BankingSystem - INFO - Transaction logged: WITHDRAWAL - Amount: 500
+2025-03-28 18:52:02,743 - BankingSystem - INFO - Transaction logged: DEPOSIT - Amount: 500
+2025-03-28 18:52:02,743 - BankingSystem - INFO - Transfer successful: 500 from a3903f58-930d-46a0-a5f5-6fd377f77536 to d341fc47-acd4-4cf6-8e75-3693261e4098
+2025-03-28 18:52:02,743 - BankingSystem - WARNING - Transfer amount 6000 exceeds single transaction limit
+2025-03-28 18:52:02,747 - werkzeug - INFO - 127.0.0.1 - - [28/Mar/2025 18:52:02] "GET / HTTP/1.1" 200 -
+2025-03-28 18:52:03,348 - werkzeug - INFO - 127.0.0.1 - - [28/Mar/2025 18:52:03] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-03-28 19:03:43,245 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-28 19:03:43,245 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-28 19:03:43,259 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-03-28 19:03:43,708 - werkzeug - WARNING -  * Debugger is active!
+2025-03-28 19:03:43,714 - werkzeug - INFO -  * Debugger PIN: 957-973-289
+2025-03-28 19:05:48,461 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-03-28 19:05:48,462 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-03-28 19:05:48,476 - werkzeug - INFO -  * Restarting with watchdog (windowsapi)
+2025-03-28 19:05:48,944 - werkzeug - WARNING -  * Debugger is active!
+2025-03-28 19:05:48,948 - werkzeug - INFO -  * Debugger PIN: 957-973-289
