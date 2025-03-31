@@ -4,6 +4,8 @@
 #include <stdexcept>
 #include <type_traits>
 #include <optional>
+#include <algorithm>
+#include <functional>
 
 // Advanced template metaprogramming challenge
 template <typename T, typename = void>
@@ -27,8 +29,27 @@ public:
         return std::nullopt;
     }
     
-    // Placeholder for future advanced operations
-    void advanced_transform();
+    // Flexible transformation method
+    template <typename Func, typename = std::enable_if_t<std::is_invocable_r_v<T, Func, T>>>
+    void advanced_transform(Func func) {
+        std::transform(data.begin(), data.end(), data.begin(), func);
+    }
+
+    // Type-safe filtering method
+    template <typename Predicate, typename = std::enable_if_t<std::is_invocable_r_v<bool, Predicate, T>>>
+    SmartContainer filter(Predicate pred) const {
+        SmartContainer result;
+        std::copy_if(data.begin(), data.end(), std::back_inserter(result.data), pred);
+        return result;
+    }
+
+    // Print method for demonstration
+    void print() const {
+        for (const auto& item : data) {
+            std::cout << item << " ";
+        }
+        std::cout << std::endl;
+    }
 };
 
 // Base class for a polymorphic type hierarchy
@@ -77,6 +98,15 @@ int main() {
     SmartContainer<int> int_container;
     int_container.insert(10);
     int_container.insert(20);
+    int_container.insert(30);
+    
+    // Apply a transformation: multiply each element by 2
+    int_container.advanced_transform([](int x) { return x * 2; });
+    int_container.print(); // Output: 20 40 60
+    
+    // Filter elements greater than 25
+    auto filtered_container = int_container.filter([](int x) { return x > 25; });
+    filtered_container.print(); // Output: 40 60
     
     // Polymorphic shape management
     std::vector<std::unique_ptr<Shape>> shapes;
