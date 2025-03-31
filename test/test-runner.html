@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Tests</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .test-results {
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 5px;
+    }
+    .pass {
+      color: green;
+    }
+    .fail {
+      color: red;
+    }
+    .summary {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>JavaScript Unit Tests</h1>
+  <div id="results" class="test-results">
+    <p>Running tests...</p>
+  </div>
+
+  <!-- Load test utilities -->
+  <script src="test-utils.js"></script>
+  
+  <!-- Load source files to test -->
+  <!-- Add your JS files here -->
+  <script src="../js/main.js"></script>
+  <script src="../portfolio/script.js"></script>
+  
+  <!-- Load test files -->
+  <script src="js-tests.js"></script>
+  <script src="portfolio-tests.js"></script>
+  
+  <script>
+    // Run all tests and display results in the page
+    document.addEventListener('DOMContentLoaded', function() {
+      const resultsDiv = document.getElementById('results');
+      resultsDiv.innerHTML = '<h2>Test Results</h2>';
+      
+      // Override console.log and console.error to display in the page
+      const originalLog = console.log;
+      const originalError = console.error;
+      
+      console.log = function(message) {
+        originalLog.apply(console, arguments);
+        const p = document.createElement('p');
+        p.textContent = message;
+        if (message.startsWith('✅')) {
+          p.className = 'pass';
+        }
+        resultsDiv.appendChild(p);
+      };
+      
+      console.error = function(message) {
+        originalError.apply(console, arguments);
+        const p = document.createElement('p');
+        p.textContent = message;
+        p.className = 'fail';
+        resultsDiv.appendChild(p);
+      };
+      
+      // Run all test suites
+      if (typeof runJsTests === 'function') {
+        runJsTests();
+      }
+      
+      if (typeof runPortfolioTests === 'function') {
+        runPortfolioTests();
+      }
+    });
+  </script>
+</body>
+</html>
