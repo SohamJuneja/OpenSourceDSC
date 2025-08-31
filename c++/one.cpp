@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <functional>
 
+#define PI 3.14159
 // Advanced template metaprogramming challenge
 template <typename T, typename = void>
 class SmartContainer
@@ -84,7 +85,7 @@ public:
 
     double get_area() const override
     {
-        return 3.14159 * radius * radius;
+        return PI * radius * radius;
     }
 };
 
